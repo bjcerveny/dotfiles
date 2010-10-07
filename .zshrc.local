@@ -1,0 +1,149 @@
+alias create_view='ssh panther1 /usr/mot/bin/create_view'
+
+aliasbd=popd
+
+# Git aliases for bash/zsh
+alias  gst='git status'
+alias   gl='git pull'
+alias   gp='git push'
+alias   gd='git diff | mate'
+alias   gc='git commit -v'
+alias  gca='git commit -v -a'
+alias   gb='git branch'
+alias  gba='git branch -a'
+alias  gfa='git fetch --all'
+alias  rfa='repo forall -c git fetch --all'
+alias   gk='gitk'
+alias  gka='gitk --all'
+alias   gr='git remote'
+alias    t='tig'
+alias   ta='tig --all'
+
+alias         gerrit='ssh gerrit gerrit'
+alias            ger=gerrit
+
+alias              g='grep'
+
+alias     basebranch="sed -e 's=.*/\\([^/]*\\)\\/[1-9][0-9]*\$=\\1='"
+alias    basebranchl="sed -e 's=.*@@\\(/.*\\)\\/[0-9]*\$=\\1='"
+alias             bd='popd'
+alias             bl='vim ~/bldlogs/`ls -1rt ~/bldlogs/ | tail -1`'
+alias            bld='bsub -I -q il93g-lnxbld'
+alias            gbl='gvim ~/bldlogs/`ls -1rt ~/bldlogs/ | tail -1`'
+alias          catcr='cleartool catcr'
+alias          catcs='cleartool catcs'
+alias            cci='cleartool checkin'
+alias         cciall='lsco -cview -all   -s | xargs -i -n 15 -P 2 --no-run-if-empty cleartool ci -nc '
+alias       cciavobs='lsco -cview -avobs -s | xargs -i -n 15 -P 2 --no-run-if-empty cleartool ci -nc '
+alias            cco='cleartool checkout'
+alias          cdiff='cleartool diff -columns 132'
+alias            cls='cleartool ls'
+alias           cman='cleartool man'
+alias             ct='cleartool'
+alias             du='du --si'
+alias            dir='ll'
+alias           dirt='ll -rt'
+alias           edcs='cleartool edcs'
+alias           gvim='gvim -p'
+alias       lsattype='cleartool lstype -kind attype'
+alias       lsbrtype='cleartool lstype -kind brtype'
+alias           lsco='cleartool lsco'
+alias       lslbtype='cleartool lstype -kind lbtype'
+alias           lsvt='cleartool lsvtree -merge'
+alias        nbcdiff='cleartool diff -columns 132 -options -blank_ignore'
+alias        nbxdiff='cleartool diff -g -options -blank_ignore'
+alias           psme='ps -Hu $USER'
+alias            psg='ps -C'
+alias            pwv='cleartool pwv -short'
+alias          quota='quota -s'
+alias          setcs='cleartool setcs'
+alias        setview='echo Using \"startview\" instead; cleartool startview'
+alias        thisvob='cleartool desc -fmt "%n\n" vob:.'
+alias           unco='cleartool uncheckout'
+alias        uncoall='lsco -cview -all   -s | sort -r | xargs -i -n 15 -P 2 --no-run-if-empty cleartool unco -rm '
+alias      uncoavobs='lsco -cview -avobs -s | sort -r | xargs -i -n 15 -P 2 --no-run-if-empty cleartool unco -rm '
+alias       uniqvobs='grep /vob | sed -e "s=.*\(/vob[s]*/\(\(linuxjava\|cdma\|cwag\|gccsc\|jem\|linuxjava\|linuxjava_test\|mm\|simtech\|tdma_tool\|testtech\|tetra\|util\)/\)\?[a-zA-Z0-9_\-]*\).*=\1=" | sort | uniq' # add -c on command line for count of uniq vobs 
+alias            vim='vim -p'
+alias            vnc='vncserver -geometry 1680x994 :88 &'
+alias          xdiff='cleartool diff -g'
+alias         xdiff0='cleartool diff -g `ct desc -s \!* | sed -f ~/bin/xdiff0.sed` &'
+alias          xlsvt='cleartool lsvtree -g'
+alias             zl='vim ~/.zshrc.local && source ~/.zshrc.local'
+
+alias -g NF='$(\ls *(.om[1]))'    # newest file
+
+# cd by .. or ... or ... or mv file ..../.
+alias '..'='cd ..'
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g ......='../../../../..'
+
+# Inline aliases, zsh -g aliases can be anywhere in command line
+alias -g G='| grep'
+alias -g L='| less'
+
+# print to standard error
+alias warn='print -u 2'
+
+coredumpsize=0
+
+# Motorola Environment - Things that are not defined for a zsh-default shell.
+#
+export HOST=`hostname`
+export MACHTYPE=`uname -i`
+export LESS=-R
+export RI="-f ansi"
+
+
+export PATH=$HOME/bin/repo_dir:/usr/vendor/bin:/usr/local/bin:/usr/bin:/bin:/usr/misc/bin:/usr/atria/bin:/usr/vendor/bin:/usr/openwin/bin:/usr/sbin:/usr/global/bin:$PATH
+if [[ `uname -s` == "Linux" ]]; then
+      PATH=/apps/android/bin:$HOME/bin/Linux:~/perl5/perlbrew/bin:$PATH	
+fi
+export http_proxy="http://wwwgate0.mot.com:1080/"
+
+# Do not watch for user login activity.
+unset watch
+unset LESSOPEN
+
+export PERL5LIB=$HOME/lib/perl5
+
+# Variables for convenience
+epu_modem="/proj/repo01/product/epu_modem"
+epx_modem="/proj/repo01/product/epx_modem"
+alias -g EPU=$epu_modem
+alias -g EPX=$epu_modem
+
+alias -g .....='../../../..'
+
+# Hosts for remote sites
+alias blr="ssh zin22andlgn-01.miel.mot.com"
+alias tls="ssh tahiti5.ea.mot.com"
+alias tx="ssh tx32srv40.am.mot.com"
+
+autoload -U zmv
+
+# Automatically set the repotop environment variable when we change
+# directory into an Android 'repo' tool Git forest. Unset the variable
+# otherwise.
+chpwd() {
+
+  local REPO_TOP=$PWD
+  until [[ -d "$REPO_TOP/.repo" || "$REPO_TOP" == "/" ]]; do
+  	REPO_TOP=`dirname "$REPO_TOP"`
+  done
+
+  if [[ "$REPO_TOP" != "/" ]]; then
+  	export repotop=$REPO_TOP
+  else
+  	unset repotop
+  fi
+}
+
+export PERL_CPANM_OPT="--local-lib=~/perl5"
+
+cdpath=(~ ~/work ~/links)
+
+export PERLBREW_ROOT=/proj/repo21/workspace/fxwr73/perlbrew
+source $PERLBREW_ROOT/etc/bashrc
+
