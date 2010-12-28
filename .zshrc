@@ -2032,6 +2032,9 @@ is4 && [[ $NOPRECMD -eq 0 ]] && precmd () {
             print -Pn "\e]0;%n@%m: %~\a"
             ;;
     esac
+
+    cdpath=(~ ~/work ~/links $repotop/motorola/modem/umts/src)
+
 }
 
 # preexec() => a function running before every command

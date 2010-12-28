@@ -51,5 +51,5 @@ inoremap  <RightMouse> <ESC>
 "-------------------------------------------------------------------------------
 " use font with clearly distinguishable brackets : ()[]{}
 "-------------------------------------------------------------------------------
-set guifont=DejaVu\ LGC\ Sans\ Mono\ 12
+set guifont=DejaVu\ LGC\ Sans\ Mono\ 10
 "

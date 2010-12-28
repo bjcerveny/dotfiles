@@ -3,12 +3,14 @@ alias create_view='ssh panther1 /usr/mot/bin/create_view'
 aliasbd=popd
 
 # Git aliases for bash/zsh
+alias repo='/apps/android/python-2.6.2/bin/python /apps/android/bin/repo'
 alias  gst='git status'
 alias   gl='git pull'
 alias   gp='git push'
 alias   gd='git diff | mate'
 alias   gc='git commit -v'
 alias  gca='git commit -v -a'
+alias  gco='git checkout'
 alias   gb='git branch'
 alias  gba='git branch -a'
 alias  gfa='git fetch --all'
@@ -16,8 +18,13 @@ alias  rfa='repo forall -c git fetch --all'
 alias   gk='gitk'
 alias  gka='gitk --all'
 alias   gr='git remote'
+alias  grb='git rebase'
+alias   mf='repo manifest -o -'
+alias  mfv='mf | view -'
 alias    t='tig'
 alias   ta='tig --all'
+alias   rt='cd $repotop'   # See repotop function below
+alias  src='cd $repotop/motorola/modem/(umts|lte_multimode)/src'   # See repotop function below
 
 alias         gerrit='ssh gerrit gerrit'
 alias            ger=gerrit
@@ -39,6 +46,7 @@ alias            cco='cleartool checkout'
 alias          cdiff='cleartool diff -columns 132'
 alias            cls='cleartool ls'
 alias           cman='cleartool man'
+alias           cpbp='cp out/target/bin/umts_wrigleyref_build.bin $repotop/motorola/bsp/prebuilt/target/images/p0a_4g_datacard/umts_wrigleyref_build.bin'
 alias             ct='cleartool'
 alias             du='du --si'
 alias            dir='ll'
@@ -52,6 +60,7 @@ alias       lslbtype='cleartool lstype -kind lbtype'
 alias           lsvt='cleartool lsvtree -merge'
 alias        nbcdiff='cleartool diff -columns 132 -options -blank_ignore'
 alias        nbxdiff='cleartool diff -g -options -blank_ignore'
+alias           psed='perl -pe'
 alias           psme='ps -Hu $USER'
 alias            psg='ps -C'
 alias            pwv='cleartool pwv -short'
@@ -142,8 +151,10 @@ chpwd() {
 
 export PERL_CPANM_OPT="--local-lib=~/perl5"
 
-cdpath=(~ ~/work ~/links)
+cdpath=(~ ~/repo ~/droidrepo ~/work ~/links)
 
 export PERLBREW_ROOT=/proj/repo21/workspace/fxwr73/perlbrew
-source $PERLBREW_ROOT/etc/bashrc
+[[ -s "$PERLBREW_ROOT/etc/bashrc" ]] && source $PERLBREW_ROOT/etc/bashrc
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
