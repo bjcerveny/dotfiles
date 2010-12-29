@@ -1,0 +1,55 @@
+# Motorola Environment - Things that are not defined for a zsh-default shell.
+#
+export HOST=`hostname`
+export MACHTYPE=`uname -i`
+export LESS=-R
+export RI="-f ansi"
+
+
+export PATH=$HOME/bin/repo_dir:/usr/vendor/bin:/usr/local/bin:/usr/bin:/bin:/usr/misc/bin:/usr/atria/bin:/usr/vendor/bin:/usr/openwin/bin:/usr/sbin:/usr/global/bin:$PATH
+if [[ `uname -s` == "Linux" ]]; then
+    PATH=/apps/android/bin:$HOME/bin/Linux:~/perl5/perlbrew/bin:$PATH
+fi
+
+export http_proxy="http://wwwgate0.mot.com:1080/"
+
+# Variables for convenience
+epu_modem="/proj/repo01/product/epu_modem"
+epx_modem="/proj/repo01/product/epx_modem"
+alias -g EPU=$epu_modem
+alias -g EPX=$epu_modem
+
+alias -g .....='../../../..'
+
+# Hosts for remote sites
+alias blr="ssh zin22andlgn-01.miel.mot.com"
+alias tls="ssh tahiti5.ea.mot.com"
+alias tx="ssh tx32srv40.am.mot.com"
+
+export PERL5LIB=$HOME/lib/perl5
+
+# Automatically set the repotop environment variable when we change
+# directory into an Android 'repo' tool Git forest. Unset the variable
+# otherwise.
+chpwd() {
+
+  local REPO_TOP=$PWD
+  until [[ -d "$REPO_TOP/.repo" || "$REPO_TOP" == "/" ]]; do
+    REPO_TOP=`dirname "$REPO_TOP"`
+  done
+
+  if [[ "$REPO_TOP" != "/" ]]; then
+    export repotop=$REPO_TOP
+  else
+    unset repotop
+  fi
+}
+
+export PERL_CPANM_OPT="--local-lib=~/perl5"
+
+cdpath=(~ ~/repo ~/droidrepo ~/work ~/links)
+
+export PERLBREW_ROOT=/proj/repo21/workspace/fxwr73/perlbrew
+[[ -s "$PERLBREW_ROOT/etc/bashrc" ]] && source $PERLBREW_ROOT/etc/bashrc
+
+

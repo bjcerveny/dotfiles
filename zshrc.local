@@ -1,0 +1,110 @@
+alias create_view='ssh panther1 /usr/mot/bin/create_view'
+
+aliasbd=popd
+
+# Git aliases for bash/zsh
+alias repo='/apps/android/python-2.6.2/bin/python /apps/android/bin/repo'
+alias  gst='git status'
+alias   gl='git pull'
+alias   gp='git push'
+alias   gd='git diff | mate'
+alias   gc='git commit -v'
+alias  gca='git commit -v -a'
+alias  gco='git checkout'
+alias   gb='git branch'
+alias  gba='git branch -a'
+alias  gfa='git fetch --all'
+alias  rfa='repo forall -c git fetch --all'
+alias   gk='gitk'
+alias  gka='gitk --all'
+alias   gr='git remote'
+alias  grb='git rebase'
+alias   mf='repo manifest -o -'
+alias  mfv='mf | view -'
+alias    t='tig'
+alias   ta='tig --all'
+alias   rt='cd $repotop'   # See repotop function below
+alias  src='cd $repotop/motorola/modem/(umts|lte_multimode)/src'   # See repotop function below
+
+alias         gerrit='ssh gerrit gerrit'
+alias            ger=gerrit
+
+alias              g='grep'
+
+alias     basebranch="sed -e 's=.*/\\([^/]*\\)\\/[1-9][0-9]*\$=\\1='"
+alias    basebranchl="sed -e 's=.*@@\\(/.*\\)\\/[0-9]*\$=\\1='"
+alias             bd='popd'
+alias             bl='vim ~/bldlogs/`ls -1rt ~/bldlogs/ | tail -1`'
+alias            bld='bsub -I -q il93g-lnxbld'
+alias            gbl='gvim ~/bldlogs/`ls -1rt ~/bldlogs/ | tail -1`'
+alias          catcr='cleartool catcr'
+alias          catcs='cleartool catcs'
+alias            cci='cleartool checkin'
+alias         cciall='lsco -cview -all   -s | xargs -i -n 15 -P 2 --no-run-if-empty cleartool ci -nc '
+alias       cciavobs='lsco -cview -avobs -s | xargs -i -n 15 -P 2 --no-run-if-empty cleartool ci -nc '
+alias            cco='cleartool checkout'
+alias          cdiff='cleartool diff -columns 132'
+alias            cls='cleartool ls'
+alias           cman='cleartool man'
+alias           cpbp='cp out/target/bin/umts_wrigleyref_build.bin $repotop/motorola/bsp/prebuilt/target/images/p0a_4g_datacard/umts_wrigleyref_build.bin'
+alias             ct='cleartool'
+alias             du='du --si'
+alias            dir='ll'
+alias           dirt='ll -rt'
+alias           edcs='cleartool edcs'
+alias           gvim='gvim -p'
+alias       lsattype='cleartool lstype -kind attype'
+alias       lsbrtype='cleartool lstype -kind brtype'
+alias           lsco='cleartool lsco'
+alias       lslbtype='cleartool lstype -kind lbtype'
+alias           lsvt='cleartool lsvtree -merge'
+alias        nbcdiff='cleartool diff -columns 132 -options -blank_ignore'
+alias        nbxdiff='cleartool diff -g -options -blank_ignore'
+alias           psed='perl -pe'
+alias           psme='ps -Hu $USER'
+alias            psg='ps -C'
+alias            pwv='cleartool pwv -short'
+alias          quota='quota -s'
+alias          setcs='cleartool setcs'
+alias        setview='echo Using \"startview\" instead; cleartool startview'
+alias        thisvob='cleartool desc -fmt "%n\n" vob:.'
+alias           unco='cleartool uncheckout'
+alias        uncoall='lsco -cview -all   -s | sort -r | xargs -i -n 15 -P 2 --no-run-if-empty cleartool unco -rm '
+alias      uncoavobs='lsco -cview -avobs -s | sort -r | xargs -i -n 15 -P 2 --no-run-if-empty cleartool unco -rm '
+alias       uniqvobs='grep /vob | sed -e "s=.*\(/vob[s]*/\(\(linuxjava\|cdma\|cwag\|gccsc\|jem\|linuxjava\|linuxjava_test\|mm\|simtech\|tdma_tool\|testtech\|tetra\|util\)/\)\?[a-zA-Z0-9_\-]*\).*=\1=" | sort | uniq' # add -c on command line for count of uniq vobs 
+alias            vim='vim -p'
+alias            vnc='vncserver -geometry 1680x994 :88 &'
+alias          xdiff='cleartool diff -g'
+alias         xdiff0='cleartool diff -g `ct desc -s \!* | sed -f ~/bin/xdiff0.sed` &'
+alias          xlsvt='cleartool lsvtree -g'
+alias             zl='vim ~/.zshrc.local && source ~/.zshrc.local'
+
+alias -g NF='$(\ls *(.om[1]))'    # newest file
+
+# cd by .. or ... or ... or mv file ..../.
+alias '..'='cd ..'
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+alias -g ......='../../../../..'
+
+# Inline aliases, zsh -g aliases can be anywhere in command line
+alias -g G='| grep'
+alias -g L='| less'
+
+# print to standard error
+alias warn='print -u 2'
+
+coredumpsize=0
+
+# Do not watch for user login activity.
+unset watch
+unset LESSOPEN
+
+autoload -U zmv
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+
+# Site-specific overrides
+[[ -s "$HOME/.zshrc.site" ]] && source "$HOME/.zshrc.site"
+
