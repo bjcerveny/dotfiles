@@ -488,7 +488,7 @@ export PAGER=${PAGER:-less}
 export MAIL=${MAIL:-/var/mail/$USER}
 
 # if we don't set $SHELL then aterm, rxvt,.. will use /bin/sh or /bin/bash :-/
-export SHELL='/bin/zsh'
+export SHELL=$HOME/bin/zsh
 
 # color setup for ls:
 check_com -c dircolors && eval $(dircolors -b)
@@ -2033,7 +2033,7 @@ is4 && [[ $NOPRECMD -eq 0 ]] && precmd () {
             ;;
     esac
 
-    cdpath=(~ ~/work ~/links $repotop/motorola/modem/umts/src)
+    cdpath=(~ ~/work ~/links ~/droidrepo ~/repo $repotop/motorola/modem/umts/src $repotop/motorola/modem/umts/src/bp_apis)
 
 }
 
@@ -4439,5 +4439,3 @@ zrclocal
 # Local variables:
 # mode: sh
 # End:
-
-PATH=$PATH:/home/fxwr73/droidrepo/SparkBuild/i686_Linux/bin;export PATH; # ADDED BY INSTALLER - DO NOT EDIT OR DELETE THIS COMMENT - 883EEE66-5223-426A-B969-A1AF545DE6D7 DC0C917C-C106-E65E-FE31-C53FC5532979

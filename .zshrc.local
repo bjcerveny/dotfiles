@@ -1,42 +1,75 @@
 alias create_view='ssh panther1 /usr/mot/bin/create_view'
 
+MANPATH=$HOME/man:$MANPATH
+
+# Create tmp directory. This is symlinked from $HOME/.tmp
+if [[ ! -d /tmp/$USER ]]; then
+  mkdir /tmp/$USER
+fi
+if [[ ! -e $HOME/tmp ]]; then
+  ln -s /tmp/$USER $HOME/tmp
+fi
+
+
+# Remove broken diff function from grml zshrc
+#unfunction diff
+
 aliasbd=popd
 
+alias btxt='echo Build exited code $? | sendmail 8479036389@txt.att.net'
+
 # Git aliases for bash/zsh
-alias repo='/apps/android/python-2.6.2/bin/python /apps/android/bin/repo'
+#alias repo='/apps/android/python-2.6.2/bin/python /home/fxwr73/bin/repo'
 alias  gst='git status'
-alias   gl='git pull'
-alias   gp='git push'
+alias   gl='git log'
+alias   gl1='git log --oneline'
+alias  gl11='git log --oneline -1'
 alias   gd='git diff | mate'
 alias   gc='git commit -v'
 alias  gca='git commit -v -a'
 alias  gco='git checkout'
+alias  gcp='git cherry-pick --no-commit'
 alias   gb='git branch'
 alias  gba='git branch -a'
 alias  gfa='git fetch --all'
 alias  rfa='repo forall -c git fetch --all'
-alias   gk='gitk'
-alias  gka='gitk --all'
+alias   gg='git log --oneline --all -i --grep'
+alias   gk='gitk &'
+alias  gka='gitk --all &'
 alias   gr='git remote'
 alias  grb='git rebase'
+function gfind() { find $1 -type f -path .git -prune -o $*[2,-1] }    
+alias lrurl='pwd -r | sed "s=.*/LTEDC=http://wcdma-releases.pcs.mot.com/releases/hudson/LTEDC="'
 alias   mf='repo manifest -o -'
 alias  mfv='mf | view -'
 alias    t='tig'
 alias   ta='tig --all'
 alias   rt='cd $repotop'   # See repotop function below
 alias  src='cd $repotop/motorola/modem/(umts|lte_multimode)/src'   # See repotop function below
+alias  mdl='cd ~/droidrepo/main-dev-lte'
+alias   dr='cd ~/droidrepo'
+alias    r='cd ~/repo'
+alias  cdrel='cd /usr/prod/temp_not_saved/3GSM_SAM-OMAP_MODEM_RELEASES/LTEDC'
+alias  apout='cd $repotop/out/target/product/${TARGET_PRODUCT:=p0a_4g_datacard}'
+alias  bpout='cd $repotop/motorola/modem/(umts|lte_multimode)/src/out/target/bin'
+alias ptrel='source ~/bin/ptrel'
+alias unptrel='source ~/bin/unptrel'
 
-alias         gerrit='ssh gerrit gerrit'
+alias lril='cd $repotop/motorola/modem/lcm/lcm/ril'
+alias mril='cd $repotop/motorola/modem/multimodem/lcm_qc/ril'
+alias pushprod='(cd ../prod && git pull dev lte)'
+
+alias         gerrit='ssh -p 29418 gerrit.pcs.mot.com gerrit'
 alias            ger=gerrit
 
 alias              g='grep'
 
 alias     basebranch="sed -e 's=.*/\\([^/]*\\)\\/[1-9][0-9]*\$=\\1='"
-alias    basebranchl="sed -e 's=.*@@\\(/.*\\)\\/[0-9]*\$=\\1='"
+alias    basebranchl="sed -e 's=.*@@\\(/.*\\)\\/[0-9]*\$=\\1=q'"
 alias             bd='popd'
-alias             bl='vim ~/bldlogs/`ls -1rt ~/bldlogs/ | tail -1`'
+alias             bl='vim $HOME/bldlogs/`ls -1rt $HOME/bldlogs/ | tail -1`'
 alias            bld='bsub -I -q il93g-lnxbld'
-alias            gbl='gvim ~/bldlogs/`ls -1rt ~/bldlogs/ | tail -1`'
+alias            gbl='gvim $HOME/bldlogs/`ls -1rt $HOME/bldlogs/ | tail -1`'
 alias          catcr='cleartool catcr'
 alias          catcs='cleartool catcs'
 alias            cci='cleartool checkin'
@@ -46,13 +79,15 @@ alias            cco='cleartool checkout'
 alias          cdiff='cleartool diff -columns 132'
 alias            cls='cleartool ls'
 alias           cman='cleartool man'
-alias           cpbp='cp out/target/bin/umts_wrigleyref_build.bin $repotop/motorola/bsp/prebuilt/target/images/p0a_4g_datacard/umts_wrigleyref_build.bin'
+alias             cp='cp -v'
+alias           cpbp='cp $repotop/motorola/modem/umts/src/out/target/bin/umts_wrigleyref_build.bin $repotop/motorola/bsp/prebuilt/target/images/p0a_4g_datacard/umts_wrigleyref_build.bin'
 alias             ct='cleartool'
 alias             du='du --si'
 alias            dir='ll'
 alias           dirt='ll -rt'
 alias           edcs='cleartool edcs'
-alias           gvim='gvim -p'
+alias           gvim='gvim -p'  # open multiple files in tabs
+alias           gzip='gzip --no-name'  # Do not store original filename/timestamp
 alias       lsattype='cleartool lstype -kind attype'
 alias       lsbrtype='cleartool lstype -kind brtype'
 alias           lsco='cleartool lsco'
@@ -73,11 +108,12 @@ alias        uncoall='lsco -cview -all   -s | sort -r | xargs -i -n 15 -P 2 --no
 alias      uncoavobs='lsco -cview -avobs -s | sort -r | xargs -i -n 15 -P 2 --no-run-if-empty cleartool unco -rm '
 alias       uniqvobs='grep /vob | sed -e "s=.*\(/vob[s]*/\(\(linuxjava\|cdma\|cwag\|gccsc\|jem\|linuxjava\|linuxjava_test\|mm\|simtech\|tdma_tool\|testtech\|tetra\|util\)/\)\?[a-zA-Z0-9_\-]*\).*=\1=" | sort | uniq' # add -c on command line for count of uniq vobs 
 alias            vim='vim -p'
-alias            vnc='vncserver -geometry 1680x994 :88 &'
+alias            vnc='vncserver -geometry 1624x1006 :88 &'
+alias            vnc2='vncserver -geometry 1280x982 :89 &'
 alias          xdiff='cleartool diff -g'
-alias         xdiff0='cleartool diff -g `ct desc -s \!* | sed -f ~/bin/xdiff0.sed` &'
+alias         xdiff0='cleartool diff -g `ct desc -s \!* | sed -f $HOME/bin/xdiff0.sed` &'
 alias          xlsvt='cleartool lsvtree -g'
-alias             zl='vim ~/.zshrc.local && source ~/.zshrc.local'
+alias             zl='vim $HOME/.zshrc.local && source $HOME/.zshrc.local'
 
 alias -g NF='$(\ls *(.om[1]))'    # newest file
 
@@ -104,12 +140,22 @@ export MACHTYPE=`uname -i`
 export LESS=-R
 export RI="-f ansi"
 
-
-export PATH=$HOME/bin/repo_dir:/usr/vendor/bin:/usr/local/bin:/usr/bin:/bin:/usr/misc/bin:/usr/atria/bin:/usr/vendor/bin:/usr/openwin/bin:/usr/sbin:/usr/global/bin:$PATH
-if [[ `uname -s` == "Linux" ]]; then
-      PATH=/apps/android/bin:$HOME/bin/Linux:~/perl5/perlbrew/bin:$PATH	
+if [ -z $SYSTEMPATH ] ; then
+  export SYSTEMPATH=$PATH
+else
+  PATH=$SYSTEMPATH
 fi
+
+if [[ `uname -s` == "Linux" ]]; then
+  PATH=$HOME/bin/Linux:$HOME/perl5/perlbrew/bin:$PATH	
+fi
+if [[ -e /localrepo/$USER/home/bin ]]; then
+  # Use system-local bin directory for speed
+  PATH=/localrepo/$USER/home/bin:/localrepo/$USER/home/bin/Linux:$PATH
+fi
+
 export http_proxy="http://wwwgate0.mot.com:1080/"
+export https_proxy=$http_proxy
 
 # Do not watch for user login activity.
 unset watch
@@ -139,7 +185,7 @@ chpwd() {
 
   local REPO_TOP=$PWD
   until [[ -d "$REPO_TOP/.repo" || "$REPO_TOP" == "/" ]]; do
-  	REPO_TOP=`dirname "$REPO_TOP"`
+  	REPO_TOP=$REPO_TOP:h
   done
 
   if [[ "$REPO_TOP" != "/" ]]; then
@@ -149,12 +195,23 @@ chpwd() {
   fi
 }
 
-export PERL_CPANM_OPT="--local-lib=~/perl5"
+export PERL_CPANM_OPT="--local-lib=$HOME/perl5"
 
-cdpath=(~ ~/repo ~/droidrepo ~/work ~/links)
+#cdpath=($HOME $HOME/repo $HOME/droidrepo $HOME/work $HOME/links)
 
-export PERLBREW_ROOT=/proj/repo21/workspace/fxwr73/perlbrew
-[[ -s "$PERLBREW_ROOT/etc/bashrc" ]] && source $PERLBREW_ROOT/etc/bashrc
+#export PERLBREW_ROOT=/proj/repo21/workspace/fxwr73/perlbrew
+#[[ -s "$PERLBREW_ROOT/etc/bashrc" ]] && source $PERLBREW_ROOT/etc/bashrc
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
+
+lrel=/usr/prod/temp_not_saved/3GSM_SAM-OMAP_MODEM_RELEASES/LTEDC
+
+bindkey ƒ forward-word
+bindkey ∫ backward-word
+
+checkpath() {
+  foreach dir in $path; do
+    ls -d $path
+  done
+}
 
