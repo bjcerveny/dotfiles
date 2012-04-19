@@ -2033,7 +2033,7 @@ is4 && [[ $NOPRECMD -eq 0 ]] && precmd () {
             ;;
     esac
 
-    cdpath=(~ ~/work ~/links $repotop/motorola/modem/umts/src)
+    cdpath=(~ ~/work ~/links $repopaths)
 
 }
 

@@ -1,1 +1,6 @@
 alias gvim=mvim
+
+PATH=~/bin:/opt/local/bin:/apps/android/bin:~/android-sdk-macosx/tools:~/android-sdk-macosx/platform-tools:$PATH
+
+source ~/perl5/perlbrew/etc/bashrc
+
