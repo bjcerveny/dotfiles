@@ -135,12 +135,11 @@ coredumpsize=0
 # Motorola Environment - Things that are not defined for a zsh-default shell.
 #
 export HOST=`hostname`
-#export MACHTYPE=`uname -i`
 export LESS=-R
 export RI="-f ansi"
 
 
-export PATH=/usr/vendor/bin:/usr/local/bin:/usr/bin:/bin:/usr/misc/bin:/usr/atria/bin:/usr/vendor/bin:/usr/openwin/bin:/usr/sbin:/usr/global/bin:$PATH
+export PATH=$HOME/bin:/usr/vendor/bin:/usr/local/bin:/usr/bin:/bin:/usr/misc/bin:/usr/atria/bin:/usr/vendor/bin:/usr/openwin/bin:/usr/sbin:/usr/global/bin:$PATH
 if [[ `uname -s` == "Linux" ]]; then
       PATH=/apps/android/bin:$HOME/bin/Linux:$HOME/perl5/perlbrew/bin:$PATH	
 fi
