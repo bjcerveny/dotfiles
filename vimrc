@@ -90,9 +90,11 @@ set scrolloff=3
 set ttyfast
 set ruler
 set laststatus=2
-set undofile
-set relativenumber
 set wrap
+if v:version >= 730
+  set undofile
+  set relativenumber
+endif
 
 
 let mapleader=", "              " change the mapleader from | to , 
@@ -106,6 +108,7 @@ vnoremap / /\v
 "  highlight paired brackets
 "-------------------------------------------------------------------------------
 highlight MatchParen ctermbg=blue guibg=lightyellow
+colorscheme darkblue
 "
 "-------------------------------------------------------------------------------
 "  some additional hot keys
@@ -170,7 +173,7 @@ nnoremap ; :
 " perl-support.vim
 "-------------------------------------------------------------------------------
 "            
-" --empty --
+let g:Perl_Debugger = 'ptkdb'
 "
 "-------------------------------------------------------------------------------
 " plugin taglist.vim : toggle the taglist window
@@ -182,4 +185,21 @@ inoremap <silent> <F11>  <C-C>:TlistToggle<CR>
 "
 let tlist_perl_settings  = 'perl;c:constants;f:formats;l:labels;p:packages;s:subroutines;d:subroutines;o:POD'
 
-"
+function! SuperCleverTab()
+    if strpart(getline('.'), 0, col('.') - 1) =~ '^\s*$'
+        return "\<Tab>"
+    else
+        if &omnifunc != ''
+            return "\<C-X>\<C-O>"
+        elseif &dictionary != ''
+            return "\<C-K>"
+        else
+            return "\<C-N>"
+        endif
+    endif
+endfunction
+
+inoremap <Tab> <C-R>=SuperCleverTab()<cr>
+
+" Enable pathogen for managing plugins
+call pathogen#infect() 

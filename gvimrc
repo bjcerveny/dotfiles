@@ -13,6 +13,8 @@
 "
 set cmdheight=2                       " Make command line two lines high
 set mousehide                         " Hide the mouse when typing text
+set showtabline=2                     " Always show the tab line
+set columns=101
 
 highlight Normal   guibg=grey90
 highlight Cursor   guibg=Blue   guifg=NONE
@@ -47,9 +49,11 @@ inoremap  <silent> <s-F3>  <Esc>:silent browse confirm e<CR>
 "-------------------------------------------------------------------------------
 nnoremap  <RightMouse> <Insert>
 inoremap  <RightMouse> <ESC>
+
+
 "
 "-------------------------------------------------------------------------------
 " use font with clearly distinguishable brackets : ()[]{}
 "-------------------------------------------------------------------------------
-set guifont=DejaVu\ LGC\ Sans\ Mono\ 10
+set guifont=DejaVu\ Sans\ Mono\ 13
 "

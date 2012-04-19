@@ -580,7 +580,7 @@ bindkey '\e[8~' end-of-line             # end
 #fi
 
 # insert unicode character
-# usage example: 'ctrl-x i' 00A7 'ctrl-x i' will give you an §
+# usage example: 'ctrl-x i' 00A7 'ctrl-x i' will give you an 
 # See for example http://unicode.org/charts/ for unicode characters code
 zrcautoload insert-unicode-char
 zle -N insert-unicode-char
@@ -4439,5 +4439,3 @@ zrclocal
 # Local variables:
 # mode: sh
 # End:
-
-PATH=$PATH:/home/fxwr73/droidrepo/SparkBuild/i686_Linux/bin;export PATH; # ADDED BY INSTALLER - DO NOT EDIT OR DELETE THIS COMMENT - 883EEE66-5223-426A-B969-A1AF545DE6D7 DC0C917C-C106-E65E-FE31-C53FC5532979

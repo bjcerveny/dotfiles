@@ -20,6 +20,8 @@ fi
 aliasbd=popd
 
 alias flasheverest='fastboot flash boot boot.img; fastboot flash recovery recovery.img; fastboot erase userdata; fastboot erase cache; fastboot reboot'
+alias btxt='echo Build exited code $? | sendmail 8479036389@txt.att.net'
+
 # Git aliases for bash/zsh
 alias ssync='repo sync -j 4 $(lsepoch.pl -q -d -w)'
 alias  gst='git status'
@@ -30,10 +32,12 @@ alias   gd='git diff | mate'
 alias   gc='git commit -v'
 alias  gca='git commit -v -a'
 alias  gco='git checkout'
+alias  gcp='git cherry-pick --no-commit'
 alias   gb='git branch'
 alias  gba='git branch -a'
 alias  gfa='git fetch --all'
 alias  rfa='repo forall -c git fetch --all'
+alias   gg='git log --oneline --all -i --grep'
 alias   gk='gitk &'
 alias  gka='gitk --all &'
 alias   gr='git remote'
@@ -53,10 +57,11 @@ alias  cdrel='cd /usr/prod/temp_not_saved/3GSM_SAM-OMAP_MODEM_RELEASES/LTEDC'
 alias  apout='cd $repotop/out/target/product/${TARGET_PRODUCT:=p0a_4g_datacard}'
 alias  bpout='cd $repotop/motorola/modem/(umts|lte_multimode)/src/out/target/bin'
 alias ptrel='source ~/bin/ptrel'
+alias unptrel='source ~/bin/unptrel'
 
 alias lril='cd $repotop/motorola/modem/lcm/lcm/ril'
 alias mril='cd $repotop/motorola/modem/multimodem/lcm_qc/ril'
-alias pushprod='(cd ../prod && git pull dev brian_lte_release)'
+alias pushprod='(cd ../prod && git pull dev lte)'
 
 alias         gerrit='ssh -p 29418 gerrit.pcs.mot.com gerrit'
 alias            ger=gerrit
@@ -107,8 +112,8 @@ alias        uncoall='lsco -cview -all   -s | sort -r | xargs -i -n 15 -P 2 --no
 alias      uncoavobs='lsco -cview -avobs -s | sort -r | xargs -i -n 15 -P 2 --no-run-if-empty cleartool unco -rm '
 alias       uniqvobs='grep /vob | sed -e "s=.*\(/vob[s]*/\(\(linuxjava\|cdma\|cwag\|gccsc\|jem\|linuxjava\|linuxjava_test\|mm\|simtech\|tdma_tool\|testtech\|tetra\|util\)/\)\?[a-zA-Z0-9_\-]*\).*=\1=" | sort | uniq' # add -c on command line for count of uniq vobs 
 alias            vim='vim -p'
-alias            vnc='vncserver -geometry 1680x988 :88 &'
-alias            vnc2='vncserver -geometry 1280x962 :89 &'
+alias            vnc='vncserver -geometry 1624x1006 :88 &'
+alias            vnc2='vncserver -geometry 1280x982 :89 &'
 alias          xdiff='cleartool diff -g'
 alias         xdiff0='cleartool diff -g `ct desc -s \!* | sed -f $HOME/bin/xdiff0.sed` &'
 alias          xlsvt='cleartool lsvtree -g'
@@ -138,17 +143,22 @@ export HOST=`hostname`
 export LESS=-R
 export RI="-f ansi"
 
+if [ -z $SYSTEMPATH ] ; then
+  export SYSTEMPATH=$PATH
+else
+  PATH=$SYSTEMPATH
+fi
 
-export PATH=$HOME/bin:/usr/vendor/bin:/usr/local/bin:/usr/bin:/bin:/usr/misc/bin:/usr/atria/bin:/usr/vendor/bin:/usr/openwin/bin:/usr/sbin:/usr/global/bin:$PATH
 if [[ `uname -s` == "Linux" ]]; then
       PATH=/apps/android/bin:$HOME/bin/Linux:$HOME/perl5/perlbrew/bin:$PATH	
 fi
 if [[ -e /localrepo/$USER/home/bin ]]; then
-  PATH=/localrepo/$USER/home/bin:$PATH
+  # Use system-local bin directory for speed
+  PATH=/localrepo/$USER/home/bin:/localrepo/$USER/home/bin/Linux:$PATH
 fi
 
 export http_proxy="http://wwwgate0.mot.com:1080/"
-export https_proxy="https://wwwgate0.mot.com:1080/"
+export https_proxy=$http_proxy
 
 # Do not watch for user login activity.
 unset watch
@@ -216,4 +226,12 @@ export PERL_CPANM_OPT="--local-lib=$HOME/perl5"
 lrel=/usr/prod/temp_not_saved/3GSM_SAM-OMAP_MODEM_RELEASES/LTEDC
 
 [[ -s "$HOME/.zshrc.site" ]] && source "$HOME/.zshrc.site"
+bindkey ƒ forward-word
+bindkey ∫ backward-word
+
+checkpath() {
+  foreach dir in $path; do
+    ls -d $path
+  done
+}
 

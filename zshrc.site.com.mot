@@ -1,5 +1,7 @@
 # Motorola Environment - Things that are not defined for a zsh-default shell.
 #
+
+export SHELL=$HOME/bin/zsh
 export HOST=`hostname`
 export MACHTYPE=`uname -s`
 export LESS=-R
