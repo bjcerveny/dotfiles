@@ -1,6 +1,9 @@
 alias create_view='ssh panther1 /usr/mot/bin/create_view'
 
-MANPATH=$HOME/man:$MANPATH
+export LD_LIBRARY_PATH=
+
+export MANPATH=$HOME/man:$MANPATH
+export MANOPT=--no-justification
 
 # Create tmp directory. This is symlinked from $HOME/.tmp
 if [[ ! -d /tmp/$USER ]]; then
@@ -16,12 +19,13 @@ fi
 
 aliasbd=popd
 
-alias btxt='echo Build exited code $? | sendmail 8479036389@txt.att.net'
+alias sms='echo Command exited code $? | sendmail 8479036389@txt.att.net'
 
 # Git aliases for bash/zsh
 #alias repo='/apps/android/python-2.6.2/bin/python /home/fxwr73/bin/repo'
-alias  gst='git status'
+alias  gst='git status --short'
 alias   gl='git log'
+alias    l='git l'
 alias   gl1='git log --oneline'
 alias  gl11='git log --oneline -1'
 alias   gd='git diff | mate'
@@ -49,6 +53,7 @@ alias  src='cd $repotop/motorola/modem/(umts|lte_multimode)/src'   # See repotop
 alias  mdl='cd ~/droidrepo/main-dev-lte'
 alias   dr='cd ~/droidrepo'
 alias    r='cd ~/repo'
+alias  cdr='cd `pwd -r`'
 alias  cdrel='cd /usr/prod/temp_not_saved/3GSM_SAM-OMAP_MODEM_RELEASES/LTEDC'
 alias  apout='cd $repotop/out/target/product/${TARGET_PRODUCT:=p0a_4g_datacard}'
 alias  bpout='cd $repotop/motorola/modem/(umts|lte_multimode)/src/out/target/bin'
@@ -166,15 +171,13 @@ export PERL5LIB=$HOME/lib/perl5
 # Variables for convenience
 epu_modem="/proj/repo01/product/epu_modem"
 epx_modem="/proj/repo01/product/epx_modem"
-alias -g EPU=$epu_modem
-alias -g EPX=$epu_modem
 
 alias -g .....='../../../..'
 
 # Hosts for remote sites
 alias blr="ssh zin22andlgn-01.miel.mot.com"
-alias tls="ssh tahiti5.ea.mot.com"
-alias tx="ssh tx32srv40.am.mot.com"
+alias tls="ssh zfr17lnxdroid13.ea.mot.com"
+alias tx="ssh tx32lnxdroid06.am.mot.com"
 
 autoload -U zmv
 
@@ -212,6 +215,32 @@ bindkey ∫ backward-word
 checkpath() {
   foreach dir in $path; do
     ls -d $path
+  done
+}
+
+
+# Geoffrey Grossenbach's git prompt
+# Prompt
+local smiley="%(?,%{$fg[green]%}?%{$reset_color%},%{$fg[red]%}?%{$reset_color%})"
+
+PROMPT='
+%~
+${smiley}  %{$reset_color%}'
+
+DONTSETRPROMPT=1
+RPROMPT='%{$fg[white]%} $(~/bin/git-cwd-info.rb)%{$reset_color%}'
+
+alias vncreset='rm -f /tmp/.X88-lock /tmp/.X11-unix/X88'
+
+
+qrm() {
+  for target in $@; do
+  	mv "$target" "_qrm_$target" && rm -rf "_qrm_$target" &
+  	if [[ $? == 0 ]]; then
+  	  print Removing \"$target\" in background.
+	else
+	  test -e "_qrm_$target" && mv "_qrm_$target" "$target"
+	fi
   done
 }
 
