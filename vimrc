@@ -16,14 +16,49 @@
 " This must be first, because it changes other options as a side effect.
 "-------------------------------------------------------------------------------
 set nocompatible
+
+"-------------------------------------------------------------------------------
+" Set up Vundle
+"-------------------------------------------------------------------------------
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+Bundle 'tpope/vim-fugitive'
+Bundle 'perl-support.vim'
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+Bundle 'git://git.wincent.com/command-t.git'
+Bundle 'Markdown'
+Bundle 'molokai'
+
+filetype plugin indent on     " required!
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed..
+
+
 "
 "-------------------------------------------------------------------------------
 " Enable file type detection. Use the default filetype settings.
 " Also load indent files, to automatically do language-dependent indenting.
 "-------------------------------------------------------------------------------
-filetype  on
-filetype  plugin on
-filetype  indent on
+"filetype  on
+"filetype  plugin on
+"filetype  indent on
 
 autocmd filetype perl   set expandtab
 autocmd filetype python set expandtab
@@ -97,7 +132,7 @@ if v:version >= 730
 endif
 
 
-let mapleader=", "              " change the mapleader from | to , 
+"let mapleader=", "              " change the mapleader from | to , 
 
 nmap <silent> <leader>/ :nohlsearch<CR>
 
@@ -200,6 +235,3 @@ function! SuperCleverTab()
 endfunction
 
 inoremap <Tab> <C-R>=SuperCleverTab()<cr>
-
-" Enable pathogen for managing plugins
-call pathogen#infect() 
