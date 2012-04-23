@@ -29,5 +29,11 @@ Then in Vim run:
 
     :BundleInstall
 
+The Command-T plugin needs a few extra steps outside of Vim:
+
+    $ cd .vim/bundle/Command-T/ruby/command-t
+    $ ruby extconf.rb
+    $ make install
+
 ## Customization
 
