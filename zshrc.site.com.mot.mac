@@ -1,0 +1,26 @@
+alias gvim=mvim
+
+PATH=~/bin:/opt/local/bin:/apps/android/bin:~/android-sdk-macosx/tools:~/android-sdk-macosx/platform-tools:$PATH
+
+# Automatically set the repotop environment variable when we change
+# directory into an Android 'repo' tool Git forest. Unset the variable
+# otherwise.
+chpwd() {
+
+  local REPO_TOP=$PWD
+  until [[ -d "$REPO_TOP/.repo" || "$REPO_TOP" == "/" ]]; do
+    REPO_TOP=`dirname "$REPO_TOP"`
+  done
+
+  if [[ "$REPO_TOP" != "/" ]]; then
+    export repotop=$REPO_TOP
+  else
+    unset repotop
+  fi
+}
+
+export http_proxy="http://wwwgate0.mot.com:1080/"
+export https_proxy=$http_proxy
+
+source ~/perl5/perlbrew/etc/bashrc
+
