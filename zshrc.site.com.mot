@@ -14,6 +14,7 @@ if [[ `uname -s` == "Linux" ]]; then
 fi
 
 export http_proxy="http://wwwgate0.mot.com:1080/"
+export https_proxy=$http_proxy
 
 # Variables for convenience
 epu_modem="/proj/repo01/product/epu_modem"

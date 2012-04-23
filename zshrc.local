@@ -159,9 +159,6 @@ if [[ -e /localrepo/$USER/home/bin ]]; then
   PATH=/localrepo/$USER/home/bin:/localrepo/$USER/home/bin/Linux:$PATH
 fi
 
-export http_proxy="http://wwwgate0.mot.com:1080/"
-export https_proxy=$http_proxy
-
 # Do not watch for user login activity.
 unset watch
 unset LESSOPEN
