@@ -20,7 +20,14 @@ Create symbolic links in your HOME directory. First backup and remove any existi
 
     $ ln -s git/dotfiles/vimrc  .vimrc
     $ ln -s git/dotfiles/gvimrc .vimrc
-    $ ln -s git/dotfiles/vim    .vim
+
+I use Vundle to manage my VIM plugins. But since Vundle and git submodules do not get alone, the ~/.vim directory is not managed. Once the dotfiles repo is cloned, install Vundle as follows:
+
+    $ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
+Then in Vim run:
+
+    :BundleInstall
 
 ## Customization
 
