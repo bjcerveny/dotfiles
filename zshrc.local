@@ -235,7 +235,7 @@ checkpath() {
 
 # Geoffrey Grossenbach's git prompt
 # Prompt
-local smiley="%(?,%{$fg[green]%}?%{$reset_color%},%{$fg[red]%}?%{$reset_color%})"
+local smiley="%(?,%{$fg[green]%}🐸%{$reset_color%},%{$fg[red]%}😡%{$reset_color%})"
 
 PROMPT='
 %~
