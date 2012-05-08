@@ -127,7 +127,7 @@ set ttyfast
 set ruler
 set laststatus=2
 set wrap
-if v:version >= 730
+if v:version >= 703
   set undofile
   set relativenumber
 endif

@@ -453,7 +453,7 @@ xunfunction() {
 # modifications in ~/.zshrc.local
 zrclocal() {
     xsource "/etc/zsh/zshrc.local"
-    xsource "${HOME}/.zshrc.local"
+    source "${HOME}/.zshrc.local"
     return 0
 }
 
