@@ -17,7 +17,8 @@ fi
 # Remove broken diff function from grml zshrc
 #unfunction diff
 
-aliasbd=popd
+alias bd=popd
+alias localserver=/usr/prod/wsdcm/bin/localserver
 
 alias flasheverest='fastboot flash boot boot.img; fastboot flash recovery recovery.img; fastboot erase userdata; fastboot erase cache; fastboot reboot'
 alias sms='echo Command exited code $? | sendmail 8479036389@txt.att.net'
@@ -52,7 +53,8 @@ alias   ta='tig --all'
 alias   rt='cd $repotop'   # See repotop function below
 alias  src='cd $repotop/motorola/modem/(umts|lte_multimode)/src'   # See repotop function below
 alias  mdl='cd ~/droidrepo/main-dev-lte'
-alias   dr='cd ~/droidrepo'
+alias   dr="cd /localrepo/$USER"
+alias  dr2="cd /localrepo2/$USER"
 alias    r='cd ~/repo'
 alias  cdr='cd `pwd -r`'
 alias  cdrel='cd /usr/prod/temp_not_saved/3GSM_SAM-OMAP_MODEM_RELEASES/LTEDC'
@@ -114,8 +116,8 @@ alias        uncoall='lsco -cview -all   -s | sort -r | xargs -i -n 15 -P 2 --no
 alias      uncoavobs='lsco -cview -avobs -s | sort -r | xargs -i -n 15 -P 2 --no-run-if-empty cleartool unco -rm '
 alias       uniqvobs='grep /vob | sed -e "s=.*\(/vob[s]*/\(\(linuxjava\|cdma\|cwag\|gccsc\|jem\|linuxjava\|linuxjava_test\|mm\|simtech\|tdma_tool\|testtech\|tetra\|util\)/\)\?[a-zA-Z0-9_\-]*\).*=\1=" | sort | uniq' # add -c on command line for count of uniq vobs 
 alias            vim='vim -p'
-alias            vnc='vncserver -geometry 1624x1006 :88 &'
-alias            vnc2='vncserver -geometry 1280x982 :89 &'
+alias            vnc='vncserver -geometry 1680x1050 :88 &'
+alias            vnc2='vncserver -geometry 1900x1200 :89 &'
 alias          xdiff='cleartool diff -g'
 alias         xdiff0='cleartool diff -g `ct desc -s \!* | sed -f $HOME/bin/xdiff0.sed` &'
 alias          xlsvt='cleartool lsvtree -g'
@@ -136,6 +138,8 @@ alias -g L='| less'
 
 # print to standard error
 alias warn='print -u 2'
+
+alias finger='rsh cobra finger'
 
 coredumpsize=0
 
