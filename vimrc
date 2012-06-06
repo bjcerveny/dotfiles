@@ -64,6 +64,8 @@ filetype plugin indent on     " required!
 autocmd filetype perl   set expandtab
 autocmd filetype python set expandtab
 autocmd filetype ruby   set expandtab
+autocmd filetype shell  set expandtab
+autocmd filetype c      set expandtab
 "
 "-------------------------------------------------------------------------------
 " Switch syntax highlighting on.
