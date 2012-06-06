@@ -64,6 +64,8 @@ filetype plugin indent on     " required!
 autocmd filetype perl   set expandtab
 autocmd filetype python set expandtab
 autocmd filetype ruby   set expandtab
+autocmd filetype shell  set expandtab
+autocmd filetype c      set expandtab
 "
 "-------------------------------------------------------------------------------
 " Switch syntax highlighting on.
@@ -127,7 +129,7 @@ set ttyfast
 set ruler
 set laststatus=2
 set wrap
-if v:version >= 730
+if v:version >= 703
   set undofile
   set relativenumber
 endif

@@ -1,6 +1,6 @@
 alias gvim=mvim
 
-PATH=~/bin:/opt/local/bin:/apps/android/bin:~/android-sdk-macosx/tools:~/android-sdk-macosx/platform-tools:$PATH
+PATH=~/bin:/usr/local/bin:/apps/android/bin:~/android-sdk-macosx/tools:~/android-sdk-macosx/platform-tools:$PATH
 
 # Automatically set the repotop environment variable when we change
 # directory into an Android 'repo' tool Git forest. Unset the variable
