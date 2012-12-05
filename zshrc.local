@@ -126,6 +126,7 @@ alias          xdiff='cleartool diff -g'
 alias         xdiff0='cleartool diff -g `ct desc -s \!* | sed -f $HOME/bin/xdiff0.sed` &'
 alias          xlsvt='cleartool lsvtree -g'
 alias             zl='gvim -f $HOME/.zshrc.local && source $HOME/.zshrc.local'
+alias             zs='gvim -f $HOME/.zshrc.site  && source $HOME/.zshrc.site'
 
 alias -g NF='$(\ls *(.om[1]))'    # newest file
 
