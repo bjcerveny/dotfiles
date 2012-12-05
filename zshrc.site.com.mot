@@ -55,4 +55,10 @@ cdpath=(~ ~/repo ~/droidrepo ~/work ~/links)
 export PERLBREW_ROOT=/proj/repo21/workspace/fxwr73/perlbrew
 [[ -s "$PERLBREW_ROOT/etc/bashrc" ]] && source $PERLBREW_ROOT/etc/bashrc
 
+vnc_client_ip() {
+  grep "Got connection" ~/.vnc/${HOST}${DISPLAY:r}.log | sed 's/.*from client //' | tail -1
+}
 
+growlnotify () {
+  ssh `growl_ip` growlnotify -n $HOST -t "Linux Message" -m "$1"
+}
