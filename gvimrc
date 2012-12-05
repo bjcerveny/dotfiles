@@ -56,7 +56,7 @@ inoremap  <RightMouse> <ESC>
 " use font with clearly distinguishable brackets : ()[]{}
 "-------------------------------------------------------------------------------
 if has("mac")
-  set guifont=Inconsolata-dz:h13
+  set guifont=Source\ Code\ Pro:h13
 else
   set guifont=DejaVu\ Sans\ Mono\ 13
 endif

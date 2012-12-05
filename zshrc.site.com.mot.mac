@@ -23,8 +23,8 @@ chpwd() {
   fi
 }
 
-export http_proxy="http://wwwgate0.mot.com:1080/"
-export https_proxy=$http_proxy
+#export http_proxy="http://wwwgate0.mot.com:1080/"
+#export https_proxy=$http_proxy
 
 source ~/perl5/perlbrew/etc/bashrc
 

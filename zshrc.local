@@ -63,6 +63,9 @@ alias  bpout='cd $repotop/motorola/modem/(umts|lte_multimode)/src/out/target/bin
 alias ptrel='source ~/bin/ptrel'
 alias unptrel='source ~/bin/unptrel'
 
+alias adbroot='adb root; adb wait-for-devices; adb remount'
+alias adbrbl='adb reboot-bootloader'
+
 alias lril='cd $repotop/motorola/modem/lcm/lcm/ril'
 alias mril='cd $repotop/motorola/modem/multimodem/lcm_qc/ril'
 alias pushprod='(cd ../prod && git pull dev lte)'
