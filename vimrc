@@ -38,6 +38,8 @@ Bundle 'FuzzyFinder'
 " Bundle 'git://git.wincent.com/command-t.git'
 Bundle 'Command-T'
 Bundle 'Markdown'
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
 Bundle 'molokai'
 
 filetype plugin indent on     " required!
