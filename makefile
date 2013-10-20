@@ -1,7 +1,12 @@
-dotfiles := .vimrc
-dotfiles += .gvimrc
-dotfiles += .zshrc
-dotfiles += .zshrc.local
+dotfiles := vimrc
+dotfiles += gvimrc
+dotfiles += zshrc
+dotfiles += zshrc.local
+
+.PHONY: install $(dotfiles)
 
 install: $(dotfiles)
-	cp -v -f $^ $(HOME)
+
+$(dotfiles):
+	cd $(HOME) && ln -f -s $(PWD)/$@ .$@
+
