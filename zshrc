@@ -15,7 +15,7 @@ ZSH_THEME="ys"
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment to change how often before auto-updates occur? (in days)
 # export UPDATE_ZSH_DAYS=13
@@ -27,7 +27,7 @@ ZSH_THEME="ys"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want to disable command autocorrection
-# DISABLE_CORRECTION="true"
+DISABLE_CORRECTION="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
@@ -40,15 +40,27 @@ ZSH_THEME="ys"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git sublime)
+plugins=(git osx sublime gradle brew repo bee)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-PATH=~/bin:$PATH
+PATH=~/bin:/opt/swdev/bin:$PATH:./
 
-source bin/als.bash
+source ~/bin/als.bash
 
 # Load alias file
-source ~/.aliases
+source ~/.aliases.zsh
+
+PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Turn off annoying spell correction
+setopt nocorrectall
+
+export GROOVY_HOME=/usr/local/opt/groovy/libexec
+export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+export GRADLE_HOME=/usr/local/opt/gradle/libexec
+
+export no_proxy=".intel.com,localhost,127.0.0.1"
+export NO_PROXY=".intel.com,localhost,127.0.0.1"
 

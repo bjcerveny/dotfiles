@@ -148,7 +148,7 @@ vnoremap / /\v
 "  highlight paired brackets
 "-------------------------------------------------------------------------------
 highlight MatchParen ctermbg=blue guibg=lightyellow
-colorscheme darkblue
+colorscheme molokai
 "
 "-------------------------------------------------------------------------------
 "  some additional hot keys
