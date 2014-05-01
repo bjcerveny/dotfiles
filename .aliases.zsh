@@ -9,7 +9,6 @@ alias df='df -H'
 
 alias bd="cd ~/Work/OptiCM6/bee-devel"
 alias beedev="/usr/local/opticm6/dev/bee/bee"
-alias cpbee='cp -v $beetop/bee-script/build/libs/bee-script-*.jar /usr/local/opticm6/dev/bee/bee-script.jar ; cp -r $beetop/bee-script/bee $beetop/bee-script/conf /usr/local/opticm6/dev/bee/'
 
 function proxtog() { 
     if [ -n "${http_proxy:+1}" ]; then 
