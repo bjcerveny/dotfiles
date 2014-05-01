@@ -5,7 +5,7 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="ys"
+ZSH_THEME="ys-brian"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -57,10 +57,13 @@ PATH=$HOME/bin:/usr/local/bin:$PATH
 # Turn off annoying spell correction
 setopt nocorrectall
 
-export GROOVY_HOME=/usr/local/opt/groovy/libexec
-export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
-export GRADLE_HOME=/usr/local/opt/gradle/libexec
+if [[ `uname -s` == "Darwin" ]]; then 
+  export GROOVY_HOME=/usr/local/opt/groovy/libexec
+  export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+  export GRADLE_HOME=/usr/local/opt/gradle/libexec
+fi
 
 export no_proxy=".intel.com,localhost,127.0.0.1"
-export NO_PROXY=".intel.com,localhost,127.0.0.1"
+export NO_PROXY=$no_proxy
+proxtog
 

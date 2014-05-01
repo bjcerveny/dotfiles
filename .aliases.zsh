@@ -1,8 +1,15 @@
 echoerr() { echo "$@" 1>&2; }
 
-alias dir="ll -l"
+alias dir="ls -l"
 alias g="grep"
 alias bt='cd $beetop'
+alias dirt="ls -lrt"
+alias lt=dirt
+alias df='df -H'
+
+alias bd="cd ~/Work/OptiCM6/bee-devel"
+alias beedev="/usr/local/opticm6/dev/bee/bee"
+alias cpbee='cp -v $beetop/bee-script/build/libs/bee-script-*.jar /usr/local/opticm6/dev/bee/bee-script.jar ; cp -r $beetop/bee-script/bee $beetop/bee-script/conf /usr/local/opticm6/dev/bee/'
 
 function proxtog() { 
     if [ -n "${http_proxy:+1}" ]; then 
@@ -33,8 +40,6 @@ brew() {
   command brew $*
 #  noproxy
 }
-
-alias bd="cd ~/Work/OptiCM6/bee-devel"
 
 source ~/bin/als.bash
 
@@ -79,6 +84,11 @@ cpbee() {
   cp -v $beetop/bee-script/build/libs/bee-script-*(On[1]) /usr/local/opticm6/dev/bee/bee-script.jar 
   cp -v $beetop/bee-script/bee /usr/local/opticm6/dev/bee/
   cp -vr $beetop/bee-script/conf /usr/local/opticm6/dev/bee/
+}
+
+# Rename files to lowercase
+zmv_lc() {
+  zmv '(*)' '${(L)1}'
 }
 
 alias bee-sms4="/usr/local/opticm6/dev/bee-sms4/bee"
