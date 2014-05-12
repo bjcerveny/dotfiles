@@ -10,6 +10,17 @@ alias df='df -H'
 alias bd="cd ~/Work/OptiCM6/bee-devel"
 alias beedev="/usr/local/opticm6/dev/bee/bee"
 
+
+# Open argument in Dash
+function dash() {
+  open "dash://$*"
+}
+
+# Like dash() but quickie for man pages
+function dman() {
+  open "dash://manpages:$*"
+}
+
 function proxtog() { 
     if [ -n "${http_proxy:+1}" ]; then 
         unset {http,https,ftp,no,socks}_proxy 
@@ -62,6 +73,7 @@ qrm() {
 
 alias gfa="git fetch --all"
 alias gst="git status -s"
+alias gk="gitk"
 alias gka="gitk --all"
 alias zs="source ~/.zshrc"
 
