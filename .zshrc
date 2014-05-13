@@ -49,8 +49,6 @@ source $DOTFILES/brians-dotfiles.sh
 # Customize to your needs...
 PATH=~/bin:/opt/swdev/bin:$PATH:./
 
-source $DOTFILES/als.bash
-
 # Load alias file
 source ~/.aliases.zsh
 

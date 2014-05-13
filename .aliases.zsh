@@ -162,7 +162,7 @@ brew() {
 #  noproxy
 }
 
-source ~/bin/als.bash
+source $DOTFILES/als.bash
 
 # Quick remove a file or directory in the background by renaming it first.
 qrm() {
