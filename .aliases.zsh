@@ -190,13 +190,18 @@ bb() {
 
 
 cpbee() {
-  is_beehive
-  cp -v $beetop/bee-script/build/libs/bee-script-*(On[1]) /usr/local/opticm6/dev/bee/bee-script.jar 
-  cp -v $beetop/bee-script/bee /usr/local/opticm6/dev/bee/
-  cp -vr $beetop/bee-script/conf /usr/local/opticm6/dev/bee/
+  beetop=`pwd`
+  cp -v $beetop/bee-script/build/libs/bee-script-*(On[1]) ~/bee/bee-script.jar 
+  cp -v $beetop/bee-script/bee ~/bee/
+  cp -vr $beetop/bee-script/conf ~/bee/
 }
 
 # Rename files to lowercase
 zmv_lc() {
   zmv '(*)' '${(L)1}'
+}
+
+module ()
+{
+    eval `/opt/Modules/bin/modulecmd bash $*`
 }
