@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
+DOTFILES=$HOME/git/dotfiles
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -43,6 +44,7 @@ DISABLE_CORRECTION="true"
 plugins=(git osx sublime gradle brew repo bee xrandr)
 
 source $ZSH/oh-my-zsh.sh
+source $DOTFILES/brians-dotfiles.sh
 
 # Customize to your needs...
 PATH=~/bin:/opt/swdev/bin:$PATH:./
