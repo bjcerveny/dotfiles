@@ -14,7 +14,7 @@ dotfiles += .cn_urania_tool.ini
 install: $(dotfiles)
 
 $(dotfiles):
-	if [ -f $(HOME)/$@ ]; then \
+	if [[ -e $(HOME)/$@ && ! -L $(HOME)/$@ ]]; then \
 	  echo Error: $(HOME)/$@ is a file. Move and commit to dotfiles repo first.; \
 	  exit 1 ;\
 	fi
