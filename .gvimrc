@@ -58,7 +58,7 @@ inoremap  <RightMouse> <ESC>
 if has("mac")
   set guifont=Source\ Code\ Pro:h14
 else
-  set guifont=Source\ Code\ Pro\ 13
+  set guifont=Inconsolata\ 13
 endif
 
 "

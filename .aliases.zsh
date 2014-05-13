@@ -79,10 +79,10 @@ alias b="bee"
 alias breset="bee forall -- git checkout development"
 
 cpbee() {
-  is_beehive
-  cp -v $beetop/bee-script/build/libs/bee-script-*(On[1]) /usr/local/opticm6/dev/bee/bee-script.jar 
-  cp -v $beetop/bee-script/bee /usr/local/opticm6/dev/bee/
-  cp -vr $beetop/bee-script/conf /usr/local/opticm6/dev/bee/
+  beetop=`pwd`
+  cp -v $beetop/bee-script/build/libs/bee-script-*(On[1]) ~/bee/bee-script.jar 
+  cp -v $beetop/bee-script/bee ~/bee/
+  cp -vr $beetop/bee-script/conf ~/bee/
 }
 
 # Rename files to lowercase
@@ -93,3 +93,9 @@ zmv_lc() {
 alias bee-sms4="/usr/local/opticm6/dev/bee-sms4/bee"
 
 alias lu="cd /localuser/bjcerven && ls -1d *(/)"
+
+module ()
+{
+    eval `/opt/Modules/bin/modulecmd bash $*`
+}
+
