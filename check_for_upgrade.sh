@@ -4,14 +4,14 @@ function _current_epoch() {
   echo $(($(date +%s) / 60 / 60 / 24))
 }
 
-function _update_zsh_update() {
-  echo "LAST_EPOCH=$(_current_epoch)" > ~/.zsh-update
+function _update_dotfiles_update() {
+  echo "LAST_EPOCH=$(_current_epoch)" > ~/.dotfiles-update
 }
 
-function _upgrade_zsh() {
-  /usr/bin/env ZSH=$ZSH /bin/sh $ZSH/tools/upgrade.sh
+function _upgrade_dotfiles() {
+  /usr/bin/env DOTFILES=$DOTFILES /bin/sh $DOTFILES/upgrade.sh
   # update the zsh file
-  _update_zsh_update
+  _update_dotfiles_update
 }
 
 epoch_target=$UPDATE_ZSH_DAYS
@@ -22,12 +22,12 @@ fi
 
 [ -f ~/.profile ] && source ~/.profile
 
-if [ -f ~/.zsh-update ]
+if [ -f ~/.dotfiles-update ]
 then
-  . ~/.zsh-update
+  . ~/.dotfiles-update
 
   if [[ -z "$LAST_EPOCH" ]]; then
-    _update_zsh_update && return 0;
+    _update_dotfiles_update && return 0;
   fi
 
   epoch_diff=$(($(_current_epoch) - $LAST_EPOCH))
@@ -35,20 +35,20 @@ then
   then
     if [ "$DISABLE_UPDATE_PROMPT" = "true" ]
     then
-      _upgrade_zsh
+      _upgrade_dotfiles
     else
-      echo "[Oh My Zsh] Would you like to check for updates?"
-      echo "Type Y to update oh-my-zsh: \c"
+      echo "[Brian's Dotfiles] Would you like to check for updates?"
+      echo "Type Y to update Brian's Dotfiles: \c"
       read line
       if [ "$line" = Y ] || [ "$line" = y ]; then
-        _upgrade_zsh
+        _upgrade_dotfiles
       else
-        _update_zsh_update
+        _update_dotfiles_update
       fi
     fi
   fi
 else
-  # create the zsh file
-  _update_zsh_update
+  # create the dotfile update file
+  _update_dotfiles_update
 fi
 
