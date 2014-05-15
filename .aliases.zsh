@@ -14,8 +14,6 @@ alias b="bee"
 alias basebranch="sed -e 's=.*/\\([^/]*\\)\\/[1-9][0-9]*\$=\\1='"
 alias basebranchl="sed -e 's=.*@@\\(/.*\\)\\/[0-9]*\$=\\1=q'"
 alias bd="cd ~/Work/OptiCM6/bee-devel"
-alias bd='popd'
-alias bd=popd
 alias bee-sms4="/usr/local/opticm6/dev/bee-sms4/bee"
 alias beedev="/usr/local/opticm6/dev/bee/bee"
 alias beedev="/usr/local/opticm6/dev/bee/bee"
@@ -129,7 +127,7 @@ function dash() {
 
 # Like dash() but quickie for man pages
 function dman() {
-  open "dash://manpages:$*"
+  open "dash://man:$*"
 }
 
 function proxtog() { 
