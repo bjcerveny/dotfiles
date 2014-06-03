@@ -68,6 +68,7 @@ alias gr='git remote'
 alias grb='git rebase'
 alias gst="git status -s"
 alias gst='git status --short'
+alias gt='cd $(git root)'  # cd $(git rev-parse --show-toplevel
 alias gvim='gvim -p'  # open multiple files in tabs
 alias gzip='gzip --no-name'  # Do not store original filename/timestamp
 alias l='git l'
@@ -188,7 +189,6 @@ bb() {
 
 
 cpbee() {
-  beetop=`pwd`
   cp -v $beetop/bee-script/build/libs/bee-script-*(On[1]) ~/bee/bee-script.jar 
   cp -v $beetop/bee-script/bee ~/bee/
   cp -vr $beetop/bee-script/conf ~/bee/
