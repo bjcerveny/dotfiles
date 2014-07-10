@@ -60,6 +60,8 @@ setopt nocorrectall
 if [[ `uname -s` == "Darwin" ]]; then 
   export GROOVY_HOME=/usr/local/opt/groovy/libexec
   export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+  # for Bee
+  export JAVA_OPTS="$JAVA_OPTS -Djavax.net.ssl.trustStore=/Library/Java/Home/lib/security/cacerts -Djavax.net.ssl.trustStorePassword=java-0kEys"
   export GRADLE_HOME=/usr/local/opt/gradle/libexec
 fi
 
@@ -68,6 +70,8 @@ export NO_PROXY=$no_proxy
 proxtog
 
 LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
+
+cdpath=(~ ~/Work /local/$USER)
 
 source ~/.zshrc.site
 

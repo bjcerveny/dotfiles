@@ -15,6 +15,7 @@ set cmdheight=2                       " Make command line two lines high
 set mousehide                         " Hide the mouse when typing text
 set showtabline=2                     " Always show the tab line
 set columns=101
+set guioptions+=T
 
 highlight Normal   guibg=grey90
 highlight Cursor   guibg=Blue   guifg=NONE

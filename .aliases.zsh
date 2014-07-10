@@ -13,9 +13,9 @@ alias -g NF='$(\ls *(.om[1]))'    # newest file
 alias b="bee"
 alias basebranch="sed -e 's=.*/\\([^/]*\\)\\/[1-9][0-9]*\$=\\1='"
 alias basebranchl="sed -e 's=.*@@\\(/.*\\)\\/[0-9]*\$=\\1=q'"
+alias bbi="bb install"
+alias bbc="bbi && cpbee"
 alias bd="cd ~/Work/OptiCM6/bee-devel"
-alias bd='popd'
-alias bd=popd
 alias bee-sms4="/usr/local/opticm6/dev/bee-sms4/bee"
 alias beedev="/usr/local/opticm6/dev/bee/bee"
 alias beedev="/usr/local/opticm6/dev/bee/bee"
@@ -44,6 +44,7 @@ alias dirt='ll -rt'
 alias dr2="cd /localrepo2/$USER"
 alias dr="cd /localrepo/$USER"
 alias du='du --si'
+alias e6='enter_oc6'
 alias edcs='cleartool edcs'
 alias g="grep"
 alias g='grep'
@@ -70,6 +71,7 @@ alias gr='git remote'
 alias grb='git rebase'
 alias gst="git status -s"
 alias gst='git status --short'
+alias gt='cd $(git root)'  # cd $(git rev-parse --show-toplevel
 alias gvim='gvim -p'  # open multiple files in tabs
 alias gzip='gzip --no-name'  # Do not store original filename/timestamp
 alias l='git l'
@@ -106,7 +108,6 @@ alias uncoall='lsco -cview -all   -s | sort -r | xargs -i -n 15 -P 2 --no-run-if
 alias uncoavobs='lsco -cview -avobs -s | sort -r | xargs -i -n 15 -P 2 --no-run-if-empty cleartool unco -rm '
 alias uniqvobs='grep /vob | sed -e "s=.*\(/vob[s]*/\(\(linuxjava\|cdma\|cwag\|gccsc\|jem\|linuxjava\|linuxjava_test\|mm\|simtech\|tdma_tool\|testtech\|tetra\|util\)/\)\?[a-zA-Z0-9_\-]*\).*=\1=" | sort | uniq' # add -c on command line for count of uniq vobs 
 alias unptrel='source ~/bin/unptrel'
-alias vim='vim -p'
 alias vnc2='vncserver -geometry 1900x1200 :89 &'
 alias vnc='vncserver -geometry 1680x1050 -depth 16 :88 &'
 alias vncreset='rm -f /tmp/.X88-lock /tmp/.X11-unix/X88'
@@ -117,7 +118,11 @@ alias xlsvt='cleartool lsvtree -g'
 alias zl='gvim -f $HOME/.zshrc.local && source $HOME/.zshrc.local'
 alias zs="source ~/.zshrc"
 alias zs='gvim -f $HOME/.zshrc.site  && source $HOME/.zshrc.site'
-
+if [[ $(uname -s) == 'Darwin' ]]; then
+  alias vim='mvim -p'
+else
+  alias vim='vim -p'
+fi
 
 echoerr() { echo "$@" 1>&2; }
 
@@ -129,7 +134,7 @@ function dash() {
 
 # Like dash() but quickie for man pages
 function dman() {
-  open "dash://manpages:$*"
+  open "dash://man:$*"
 }
 
 function proxtog() { 
@@ -190,7 +195,6 @@ bb() {
 
 
 cpbee() {
-  beetop=`pwd`
   cp -v $beetop/bee-script/build/libs/bee-script-*(On[1]) ~/bee/bee-script.jar 
   cp -v $beetop/bee-script/bee ~/bee/
   cp -vr $beetop/bee-script/conf ~/bee/
@@ -204,4 +208,17 @@ zmv_lc() {
 module ()
 {
     eval `/opt/Modules/bin/modulecmd bash $*`
+}
+
+
+function ip() {
+  local en0=$(ifconfig en0 | grep '^\s*inet ' | sed 's/.*inet \([0-9\.]*\).*/\1/')
+  local en1=$(ifconfig en1 | grep '^\s*inet ' | sed 's/.*inet \([0-9\.]*\).*/\1/')
+  if [[ -n "$en0" ]]; then
+	echo $en0
+  elif [[ -n "$en1" ]]; then
+	echo $en1
+  else
+	echo No IP Address set
+  fi
 }
