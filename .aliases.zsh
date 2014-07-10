@@ -44,6 +44,7 @@ alias dirt='ll -rt'
 alias dr2="cd /localrepo2/$USER"
 alias dr="cd /localrepo/$USER"
 alias du='du --si'
+alias e6='enter_oc6'
 alias edcs='cleartool edcs'
 alias g="grep"
 alias g='grep'
