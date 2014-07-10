@@ -69,3 +69,5 @@ proxtog
 
 LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
 
+source ~/.zshrc.site
+
