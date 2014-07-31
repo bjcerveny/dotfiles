@@ -1,4 +1,5 @@
 # Path to your oh-my-zsh configuration.
+SHELL=/bin/zsh
 ZSH=$HOME/.oh-my-zsh
 DOTFILES=$HOME/git/dotfiles
 
@@ -55,6 +56,7 @@ source $ZSH/oh-my-zsh.sh
 
 source $DOTFILES/brians-dotfiles.sh
 
+# Customize to your needs...
 export PATH=~/bin:/opt/swdev/bin:$HOME/bin:/usr/local/bin:$PATH:./
 # export MANPATH="/usr/local/man:$MANPATH"
 
