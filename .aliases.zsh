@@ -147,9 +147,9 @@ function proxtog() {
         unset {HTTP,HTTPS,FTP,ALL,NO,SOCKS}_PROXY 
         echo PROXIES CLEAR 
     else 
-        export {http,https,ftp,all}_proxy='http://proxy-chain.intel.com:911' 
+        export {http,https,ftp,all}_proxy='http://proxy-mu.intel.com:911' 
         export {HTTP,HTTPS,FTP,ALL}_PROXY=$http_proxy 
-        export socks_proxy=http://proxy-chain.intel.com:1080 
+        export socks_proxy=http://proxy-mu.intel.com:1080 
         export SOCKS_PROXY=$socks_proxy 
         export no_proxy=intel.com,.intel.com,10.0.0.0/8,192.168.0.0/16,localhost,127.0.0.0/8,134.134.0.0/16 
         export NO_PROXY=$no_proxy 
@@ -226,3 +226,5 @@ function ip() {
 	echo No IP Address set
   fi
 }
+
+alias fromip="last -1 -i -a | cut -c61- | head -1"
