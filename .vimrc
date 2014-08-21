@@ -41,6 +41,7 @@ Bundle 'Markdown'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'molokai'
+Plugin 'Valloric/YouCompleteMe' 
 
 filetype plugin indent on     " required!
 "

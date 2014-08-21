@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [[ -z $1 ]]; then
+  echo No man page specified. Search within Dash.
+fi
+
+open dash://man:$1
+

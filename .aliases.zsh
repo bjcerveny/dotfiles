@@ -10,6 +10,8 @@ alias -g ...='../..'
 alias -g G='| grep'
 alias -g L='| less'
 alias -g NF='$(\ls *(.om[1]))'    # newest file
+alias -g np='PAGER='
+alias -g GT='GIT_TRACE=1'
 alias b="bee"
 alias basebranch="sed -e 's=.*/\\([^/]*\\)\\/[1-9][0-9]*\$=\\1='"
 alias basebranchl="sed -e 's=.*@@\\(/.*\\)\\/[0-9]*\$=\\1=q'"
@@ -60,13 +62,13 @@ alias ger=gerrit
 alias gfa="git fetch --all"
 alias gfa='git fetch --all'
 alias gg='git log --oneline --all -i --grep'
-alias gk="gitk"
 alias gk='gitk &'
 alias gka="gitk --all"
 alias gka='gitk --all &'
 alias gl11='git log --oneline -1'
 alias gl1='git log --oneline'
 alias gl='git log'
+alias gq='ssh opticm6.rds.intel.com gerrit show-queue | grep tasks'
 alias gr='git remote'
 alias grb='git rebase'
 alias gst="git status -s"
@@ -88,8 +90,6 @@ alias mfv='mf | view -'
 alias nbcdiff='cleartool diff -columns 132 -options -blank_ignore'
 alias nbxdiff='cleartool diff -g -options -blank_ignore'
 alias psed='perl -pe'
-alias psg='ps -C'
-alias psme='ps -Hu $USER'
 alias ptrel='source ~/bin/ptrel'
 alias pushprod='(cd ../prod && git pull dev lte)'
 alias pwv='cleartool pwv -short'
@@ -120,8 +120,12 @@ alias zs="source ~/.zshrc"
 alias zs='gvim -f $HOME/.zshrc.site  && source $HOME/.zshrc.site'
 if [[ $(uname -s) == 'Darwin' ]]; then
   alias vim='mvim -p'
+  alias psg='ps -ef | grep'
+  alias psme='ps -fu $USER'
 else
   alias vim='vim -p'
+  alias psg='ps -C | grep'
+  alias psme='ps -Hu $USER'
 fi
 
 echoerr() { echo "$@" 1>&2; }
