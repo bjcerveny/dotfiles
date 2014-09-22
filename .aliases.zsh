@@ -50,7 +50,7 @@ alias e6='enter_oc6'
 alias edcs='cleartool edcs'
 alias g="grep"
 alias g='grep'
-alias gb='git branch'
+#alias gb='git branch'
 alias gba='git branch -a'
 alias gbl='gvim $HOME/bldlogs/`ls -1rt $HOME/bldlogs/ | tail -1`'
 alias gc='git commit -v'
@@ -225,4 +225,17 @@ function ip() {
   else
 	echo No IP Address set
   fi
+}
+
+function gb() {
+  branches=$(git for-each-ref --format='%(refname)' refs/heads/ | sed 's|refs/heads/||')
+  for branch in $branches; do
+    desc=$(git config branch.$branch.description)
+    if [ $branch == $(git rev-parse --abbrev-ref HEAD) ]; then
+      branch="* \033[0;32m$branch\033[0m"
+     else
+       branch="  $branch"
+     fi
+     echo -e "$branch \033[0;36m$desc\033[0m"
+  done
 }
