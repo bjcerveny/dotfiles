@@ -180,8 +180,6 @@ brew() {
 #  noproxy
 }
 
-source $DOTFILES/als.bash
-
 # Quick remove a file or directory in the background by renaming it first.
 qrm() {
   for target in $@; do
@@ -237,10 +235,10 @@ function ip() {
 }
 
 function gb() {
-  branches=$(git for-each-ref --format='%(refname)' refs/heads/ | sed 's|refs/heads/||')
+  branches=($(git for-each-ref --format='%(refname)' refs/heads/ | sed 's|refs/heads/||'))
   for branch in $branches; do
-    desc=$(git config branch.$branch.description)
-    if [ $branch == $(git rev-parse --abbrev-ref HEAD) ]; then
+    desc="$(git config branch.$branch.description)"
+    if [[ $branch == $(git rev-parse --abbrev-ref HEAD) ]]; then
       branch="* \033[0;32m$branch\033[0m"
      else
        branch="  $branch"
@@ -248,7 +246,40 @@ function gb() {
      echo -e "$branch \033[0;36m$desc\033[0m"
   done
 }
+
 alias fromip="last -1 -i -a | cut -c61- | head -1"
-
-
 alias gerrit="ssh opticm6.rds.intel.com gerrit"
+
+# alias last and save
+# # use `als c NAME` to chop off the last argument (for filenames/patterns)
+
+als () {
+	local aliasfile chop x
+	[[ $# = 0 ]] && echo "Name your alias" && return
+	if [[ $1 = "c" ]]
+	then
+		chop=true 
+		shift
+	fi
+	aliasfile=~/.aliases.${SHELL:t}
+	touch $aliasfile
+	if [[ `cat "$aliasfile" |grep "alias ${1// /}="` != "" ]]
+	then
+		echo "Alias ${1// /} already exists"
+	else
+		x=`fc -l -n -1`
+		if [[ $chop = true ]]
+		then
+			echo "Chopping..."
+			x=$(echo $x | rev | cut -d " " -f2- | rev) 
+		fi
+		echo -e "\nalias ${1// /}=\"`echo $x|sed -e 's/ *$//'|sed -e 's/\"/\\\\"/g'`\"" >> $aliasfile && source $aliasfile
+		alias $1
+	fi
+}
+
+alias prop="cd ~/l/7360/utils/scripts/propagation"
+
+alias gdt="git difftool"
+
+alias ax="chmod a+x"
