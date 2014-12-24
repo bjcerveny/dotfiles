@@ -48,9 +48,10 @@ alias dr="cd /localrepo/$USER"
 alias du='du --si'
 alias e6='enter_oc6'
 alias edcs='cleartool edcs'
+alias fromip="last -1 -i -a | cut -c61- | head -1"
 alias g="grep"
 alias g='grep'
-alias gb='git branch'
+#alias gb='git branch'
 alias gba='git branch -a'
 alias gbl='gvim $HOME/bldlogs/`ls -1rt $HOME/bldlogs/ | tail -1`'
 alias gc='git commit -v'
@@ -141,19 +142,27 @@ function dman() {
   open "dash://man:$*"
 }
 
+function proxset() {
+	export {http,https,ftp,all}_proxy='http://proxy-mu.intel.com:911' 
+	export {HTTP,HTTPS,FTP,ALL}_PROXY=$http_proxy 
+	export socks_proxy=http://proxy-mu.intel.com:1080 
+	export SOCKS_PROXY=$socks_proxy 
+	export no_proxy=intel.com,.intel.com,10.0.0.0/8,192.168.0.0/16,localhost,127.0.0.0/8,134.134.0.0/16 
+	export NO_PROXY=$no_proxy 
+	echo PROXIES SET 
+}
+
+function proxclear() {
+	unset {http,https,ftp,no,socks}_proxy 
+	unset {HTTP,HTTPS,FTP,ALL,NO,SOCKS}_PROXY 
+	echo PROXIES CLEAR 
+}
+
 function proxtog() { 
     if [ -n "${http_proxy:+1}" ]; then 
-        unset {http,https,ftp,no,socks}_proxy 
-        unset {HTTP,HTTPS,FTP,ALL,NO,SOCKS}_PROXY 
-        echo PROXIES CLEAR 
+        proxclear
     else 
-        export {http,https,ftp,all}_proxy='http://proxy-mu.intel.com:911' 
-        export {HTTP,HTTPS,FTP,ALL}_PROXY=$http_proxy 
-        export socks_proxy=http://proxy-mu.intel.com:1080 
-        export SOCKS_PROXY=$socks_proxy 
-        export no_proxy=intel.com,.intel.com,10.0.0.0/8,192.168.0.0/16,localhost,127.0.0.0/8,134.134.0.0/16 
-        export NO_PROXY=$no_proxy 
-        echo PROXIES SET 
+        proxset
     fi 
 } 
 
@@ -227,4 +236,19 @@ function ip() {
   fi
 }
 
+function gb() {
+  branches=$(git for-each-ref --format='%(refname)' refs/heads/ | sed 's|refs/heads/||')
+  for branch in $branches; do
+    desc=$(git config branch.$branch.description)
+    if [ $branch == $(git rev-parse --abbrev-ref HEAD) ]; then
+      branch="* \033[0;32m$branch\033[0m"
+     else
+       branch="  $branch"
+     fi
+     echo -e "$branch \033[0;36m$desc\033[0m"
+  done
+}
 alias fromip="last -1 -i -a | cut -c61- | head -1"
+
+
+alias gerrit="ssh opticm6.rds.intel.com gerrit"

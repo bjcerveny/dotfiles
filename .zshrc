@@ -3,6 +3,9 @@ SHELL=/bin/zsh
 ZSH=$HOME/.oh-my-zsh
 DOTFILES=$HOME/git/dotfiles
 
+source ~/.aliases.zsh
+proxset
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -47,7 +50,7 @@ ZSH_CUSTOM=$DOTFILES/oh-my-zsh/custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx sublime gradle brew repo bee history-substring-search xrandr)
+plugins=(tmux git osx sublime gradle brew repo bee history-substring-search xrandr)
 
 
 source $ZSH/oh-my-zsh.sh
@@ -87,10 +90,6 @@ if [[ `uname -s` == "Darwin" ]]; then
   export JAVA_OPTS="$JAVA_OPTS -Djavax.net.ssl.trustStore=/Library/Java/Home/lib/security/cacerts -Djavax.net.ssl.trustStorePassword=java-0kEys"
   export GRADLE_HOME=/usr/local/opt/gradle/libexec
 fi
-
-export no_proxy=".intel.com,localhost,127.0.0.1"
-export NO_PROXY=$no_proxy
-proxtog
 
 LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
 
