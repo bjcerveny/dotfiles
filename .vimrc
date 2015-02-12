@@ -41,7 +41,7 @@ Bundle 'Markdown'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'molokai'
-Bundle 'Valloric/YouCompleteMe' 
+"Bundle 'Valloric/YouCompleteMe' 
 
 filetype plugin indent on     " required!
 "
@@ -241,3 +241,6 @@ function! SuperCleverTab()
 endfunction
 
 inoremap <Tab> <C-R>=SuperCleverTab()<cr>
+
+au BufNewFile,BufRead *.gradle setf groovy
+

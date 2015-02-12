@@ -283,3 +283,15 @@ alias prop="cd ~/l/7360/utils/scripts/propagation"
 alias gdt="git difftool"
 
 alias ax="chmod a+x"
+
+alias py="python"
+
+alias gerrit="ssh opticm6.rds.intel.com gerrit"
+
+alias gbv="git branch -v"
+
+alias srs="./utp_set_review_state -i"
+
+alias utils="cd /Users/bjcerven/l/oc6_utils/oc6_utils"
+
+alias bca="bee commit --amend -a ."

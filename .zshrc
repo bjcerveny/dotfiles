@@ -1,4 +1,5 @@
 # Path to your oh-my-zsh configuration.
+source .zshrc.site.pre
 SHELL=/bin/zsh
 ZSH=$HOME/.oh-my-zsh
 DOTFILES=$HOME/git/dotfiles
@@ -87,7 +88,8 @@ if [[ `uname -s` == "Darwin" ]]; then
   export GROOVY_HOME=/usr/local/opt/groovy/libexec
   export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
   # for Bee
-  export JAVA_OPTS="$JAVA_OPTS -Djavax.net.ssl.trustStore=/Library/Java/Home/lib/security/cacerts -Djavax.net.ssl.trustStorePassword=java-0kEys"
+  #export JAVA_OPTS="$JAVA_OPTS -Djavax.net.ssl.trustStore=/Library/Java/Home/lib/security/cacerts -Djavax.net.ssl.trustStorePassword=java-0kEys"
+  export JAVA_OPTS="$JAVA_OPTS -Djavax.net.ssl.trustStore=$JAVA_HOME/lib/security/cacerts -Djavax.net.ssl.trustStorePassword=java-0kEys"
   export GRADLE_HOME=/usr/local/opt/gradle/libexec
 fi
 
