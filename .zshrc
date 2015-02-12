@@ -110,4 +110,4 @@ bindkey '^T' autosuggest-toggle
 
 # Set site-specific items.
 source ~/.zshrc.site
-
+compinit -i
