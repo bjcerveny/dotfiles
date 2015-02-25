@@ -134,7 +134,7 @@ set laststatus=2
 set wrap
 if v:version >= 703
   set undofile
-  set relativenumber
+  " set relativenumber
 endif
 
 

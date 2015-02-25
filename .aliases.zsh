@@ -25,7 +25,6 @@ alias bl='gvim $HOME/bldlogs/`ls -1rt $HOME/bldlogs/ | tail -1`'
 alias bld='bsub -I -q il93g-lnxbld'
 alias breset="bee forall -- git checkout development"
 alias bst="bee status"
-alias bt='cd $beetop'
 alias catcr='cleartool catcr'
 alias catcs='cleartool catcs'
 alias cci='cleartool checkin'
@@ -208,7 +207,7 @@ bb() {
 cpbee() {
   cp -v $beetop/bee-script/build/libs/bee-script-*(On[1]) ~/bee/bee-script.jar 
   cp -v $beetop/bee-script/bee ~/bee/
-  cp -vr $beetop/bee-script/conf ~/bee/
+  cp -v $beetop/conf/* ~/bee/conf
 }
 
 # Rename files to lowercase
@@ -278,6 +277,14 @@ als () {
 	fi
 }
 
+function bt() {
+  if [[ -n $beetop ]]; then
+  	cd $beetop
+  else
+  	echo Not in a bee workspace.
+  fi
+}
+
 alias prop="cd ~/l/7360/utils/scripts/propagation"
 
 alias gdt="git difftool"
@@ -295,3 +302,5 @@ alias srs="./utp_set_review_state -i"
 alias utils="cd /Users/bjcerven/l/oc6_utils/oc6_utils"
 
 alias bca="bee commit --amend -a ."
+
+alias cdc="create_date_commit.sh"
