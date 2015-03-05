@@ -113,3 +113,6 @@ bindkey '^T' autosuggest-toggle
 # Set site-specific items.
 source ~/.zshrc.site
 compinit -i
+
+export LESS=-r
+export PAGER=less
