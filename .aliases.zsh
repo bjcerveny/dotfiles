@@ -207,7 +207,8 @@ bb() {
 cpbee() {
   cp -v $beetop/bee-script/build/libs/bee-script-*(On[1]) ~/bee/bee-script.jar 
   cp -v $beetop/bee-script/bee ~/bee/
-  cp -v $beetop/conf/* ~/bee/conf
+  cp -v $beetop/bee-script/conf/* ~/bee/conf
+  #cp -v $beetop/conf/* ~/bee/conf
 }
 
 # Rename files to lowercase
@@ -304,3 +305,5 @@ alias utils="cd /Users/bjcerven/l/oc6_utils/oc6_utils"
 alias bca="bee commit --amend -a ."
 
 alias cdc="create_date_commit.sh"
+
+alias beecommands="bee -h | grep '^  ' | sed 's/^..//;s/[ /].*//'"

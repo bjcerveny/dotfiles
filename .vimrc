@@ -42,6 +42,8 @@ Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'molokai'
 "Bundle 'Valloric/YouCompleteMe' 
+Bundle 'klen/python-mode'
+Bundle 'asciidoc'
 
 filetype plugin indent on     " required!
 "
@@ -66,6 +68,7 @@ filetype plugin indent on     " required!
 
 autocmd filetype perl   set expandtab
 autocmd filetype python set expandtab
+autocmd filetype python set colorcolumn=120
 autocmd filetype ruby   set expandtab
 autocmd filetype shell  set expandtab
 autocmd filetype c      set expandtab
@@ -244,3 +247,5 @@ inoremap <Tab> <C-R>=SuperCleverTab()<cr>
 
 au BufNewFile,BufRead *.gradle setf groovy
 
+" Pylint config file
+" let g:pymode_lint_config='$HOME/.pylint.rc'
