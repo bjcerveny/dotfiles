@@ -94,7 +94,6 @@ alias ptrel='source ~/bin/ptrel'
 alias pushprod='(cd ../prod && git pull dev lte)'
 alias pwv='cleartool pwv -short'
 alias quota='quota -s'
-alias r='cd ~/repo'
 alias rfa='repo forall -c git fetch --all'
 alias rt='cd $repotop'   # See repotop function below
 alias setcs='cleartool setcs'
@@ -201,6 +200,7 @@ bb() {
   echo Building in $beetop/build...
   cd $beetop/build
   ./gradlew $@
+  cd -
 }
 
 
@@ -307,3 +307,7 @@ alias bca="bee commit --amend -a ."
 alias cdc="create_date_commit.sh"
 
 alias beecommands="bee -h | grep '^  ' | sed 's/^..//;s/[ /].*//'"
+
+alias enable-crd="sed -i .bak 's=<crdEnabled>false</crdEnabled>=<crdEnabled>true</crdEnabled>=' .hive/config/config.xml"
+
+alias bee-dev="/usr/local/opticm6/dev/bee/bee"
