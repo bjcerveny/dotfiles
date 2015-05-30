@@ -140,38 +140,6 @@ function dman() {
   open "dash://man:$*"
 }
 
-function proxset() {
-	export {http,https,ftp,all}_proxy='http://proxy-mu.intel.com:911' 
-	export {HTTP,HTTPS,FTP,ALL}_PROXY=$http_proxy 
-	export socks_proxy=http://proxy-mu.intel.com:1080 
-	export SOCKS_PROXY=$socks_proxy 
-	export no_proxy=intel.com,.intel.com,10.0.0.0/8,192.168.0.0/16,localhost,127.0.0.0/8,134.134.0.0/16 
-	export NO_PROXY=$no_proxy 
-	echo PROXIES SET 
-}
-
-function proxclear() {
-	unset {http,https,ftp,no,socks}_proxy 
-	unset {HTTP,HTTPS,FTP,ALL,NO,SOCKS}_PROXY 
-	echo PROXIES CLEAR 
-}
-
-function proxtog() { 
-    if [ -n "${http_proxy:+1}" ]; then 
-        proxclear
-    else 
-        proxset
-    fi 
-} 
-
-function proxstat() { 
-    if [ -n "${http_proxy:+1}" ]; then 
-        echo PROXIES SET 
-    else 
-        echo PROXIES EMPTY 
-    fi 
-}
-
 brew() {
 #  proxy 
   command brew $*
@@ -311,3 +279,7 @@ alias beecommands="bee -h | grep '^  ' | sed 's/^..//;s/[ /].*//'"
 alias enable-crd="sed -i .bak 's=<crdEnabled>false</crdEnabled>=<crdEnabled>true</crdEnabled>=' .hive/config/config.xml"
 
 alias bee-dev="/usr/local/opticm6/dev/bee/bee"
+
+alias oc6mirrors="xml sel -t -v '//alias[@name=\"opticm6\"]/slave[@isSlaveSite=\"true\"]/@host' /usr/local/opticm6/bee-current/conf/gerrit-hosts.xml"
+
+alias ipython="python -m IPython"

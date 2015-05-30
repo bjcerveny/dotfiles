@@ -4,9 +4,6 @@ SHELL=/bin/zsh
 ZSH=$HOME/.oh-my-zsh
 DOTFILES=$HOME/git/dotfiles
 
-source ~/.aliases.zsh
-proxset
-
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each

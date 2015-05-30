@@ -18,7 +18,7 @@ compdef _bee bsbra='bee sync ; bee rebase --auto-stash'
 function chpwd() {
 
   local BEE_TOP=$PWD
-  until [[ -d "$BEE_TOP/.hive" || "$BEE_TOP" == "/" ]]; do
+  until [[ -d "$BEE_TOP/.hive/config" || "$BEE_TOP" == "/" ]]; do
     BEE_TOP=$BEE_TOP:h
   done
 
