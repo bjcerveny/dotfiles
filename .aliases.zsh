@@ -254,6 +254,18 @@ function bt() {
   fi
 }
 
+man() {
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+        LESS_TERMCAP_md=$(printf "\e[1;31m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+            man "$@"
+}
+
 alias prop="cd ~/l/7360/utils/scripts/propagation"
 
 alias gdt="git difftool"
@@ -283,3 +295,5 @@ alias bee-dev="/usr/local/opticm6/dev/bee/bee"
 alias oc6mirrors="xml sel -t -v '//alias[@name=\"opticm6\"]/slave[@isSlaveSite=\"true\"]/@host' /usr/local/opticm6/bee-current/conf/gerrit-hosts.xml"
 
 alias ipython="python -m IPython"
+
+

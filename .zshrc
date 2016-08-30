@@ -83,7 +83,7 @@ setopt nocorrectall
 
 if [[ `uname -s` == "Darwin" ]]; then 
   export GROOVY_HOME=/usr/local/opt/groovy/libexec
-  export JAVA_HOME=`/usr/libexec/java_home -v 1.7`
+  export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
   # for Bee
   #export JAVA_OPTS="$JAVA_OPTS -Djavax.net.ssl.trustStore=/Library/Java/Home/lib/security/cacerts -Djavax.net.ssl.trustStorePassword=java-0kEys"
   export JAVA_OPTS="$JAVA_OPTS -Djavax.net.ssl.trustStore=$JAVA_HOME/lib/security/cacerts -Djavax.net.ssl.trustStorePassword=java-0kEys"
@@ -113,3 +113,5 @@ compinit -i
 
 export LESS=-r
 export PAGER=less
+
+test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
