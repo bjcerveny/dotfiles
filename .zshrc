@@ -76,7 +76,7 @@ export PATH=~/bin:/opt/swdev/bin:$HOME/bin:/usr/local/bin:$PATH:./
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-source ~/.aliases.zsh
+source ~/.alias
 
 # Turn off annoying spell correction
 setopt nocorrectall
