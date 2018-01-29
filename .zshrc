@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh configuration.
-source .zshrc.site.pre
+source $HOME/.zshrc.site.pre
 SHELL=/bin/zsh
 ZSH=$HOME/.oh-my-zsh
 DOTFILES=$HOME/git/dotfiles
@@ -76,7 +76,7 @@ export PATH=~/bin:/opt/swdev/bin:$HOME/bin:/usr/local/bin:$PATH:./
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-source ~/.alias
+source ~/.aliases.zsh
 
 # Turn off annoying spell correction
 setopt nocorrectall
