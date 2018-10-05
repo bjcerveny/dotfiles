@@ -6,3 +6,4 @@
 *.orig
 .objects.mk
 foo
+bar
