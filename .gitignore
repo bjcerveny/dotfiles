@@ -6,3 +6,5 @@
 *.orig
 .objects.mk
 foo
+bar
+hahaha
