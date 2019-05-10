@@ -297,3 +297,5 @@ alias oc6mirrors="xml sel -t -v '//alias[@name=\"opticm6\"]/slave[@isSlaveSite=\
 alias ipython="python -m IPython"
 
 
+
+alias py3="python3"
