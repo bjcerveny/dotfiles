@@ -296,10 +296,4 @@ alias oc6mirrors="xml sel -t -v '//alias[@name=\"opticm6\"]/slave[@isSlaveSite=\
 
 alias ipython="python -m IPython"
 
-
-
-<<<<<<< HEAD
 alias py3="python3"
-=======
-alias jenkins=ssh-p30303localhost="ssh -p 30303 localhost restart"
->>>>>>> origin/master
