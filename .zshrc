@@ -8,7 +8,7 @@ DOTFILES=$HOME/git/dotfiles
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="ys-brian"
+#ZSH_THEME="ys-brian"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -48,7 +48,7 @@ ZSH_CUSTOM=$DOTFILES/oh-my-zsh-custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(tmux git osx sublime gradle brew repo bee history-substring-search xrandr)
+plugins=(tmux git osx sublime gradle brew repo bee history-substring-search xrandr docker)
 
 
 source $ZSH/oh-my-zsh.sh
@@ -115,3 +115,21 @@ export LESS=-r
 export PAGER=less
 
 test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh
+
+# added by Anaconda3 2019.03 installer
+# >>> conda init >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$(CONDA_REPORT_ERRORS=false '/Users/bcerveny/anaconda3/bin/conda' shell.bash hook 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    \eval "$__conda_setup"
+else
+    if [ -f "/Users/bcerveny/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/bcerveny/anaconda3/etc/profile.d/conda.sh"
+        CONDA_CHANGEPS1=false conda activate base
+    else
+        \export PATH="/Users/bcerveny/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda init <<<
+
