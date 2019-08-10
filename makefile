@@ -3,9 +3,7 @@ dotfiles += .gvimrc
 dotfiles += .zshrc
 dotfiles += .zshrc.local
 dotfiles += .aliases.zsh
-dotfiles += .aliases.tcsh
-dotfiles += .ws_pwd.dat
-dotfiles += .cn_urania_tool.ini
+dotfiles += .p10k.zsh
 
 .SILENT:
 
