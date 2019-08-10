@@ -48,7 +48,7 @@ ZSH_CUSTOM=$DOTFILES/oh-my-zsh-custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(tmux git osx sublime gradle brew repo bee history-substring-search xrandr)
+plugins=(git osx docker sublime gradle brew repo history-substring-search)
 
 
 source $ZSH/oh-my-zsh.sh

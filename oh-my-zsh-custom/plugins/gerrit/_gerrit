@@ -1,0 +1,8 @@
+# Aliases
+alias gerrit='ssh git.shure.com'
+compdef _gerrit gerrit=gerrit
+
+alias gsql='gerrit gsql'
+compdef _gerrit gsql='gerrit gsql'
+
+
