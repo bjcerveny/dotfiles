@@ -8,7 +8,8 @@ DOTFILES=$HOME/git/dotfiles
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="ys-brian"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME=powerlevel10k/powerlevel10k
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -48,7 +49,7 @@ ZSH_CUSTOM=$DOTFILES/oh-my-zsh-custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(tmux git osx sublime gradle brew repo bee history-substring-search xrandr)
+plugins=(git svn osx docker brew brew repo history-substring-search zsh-autosuggestions)
 
 
 source $ZSH/oh-my-zsh.sh
@@ -94,19 +95,6 @@ LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
 
 cdpath=(~ ~/Work /local/$USER)
 
-# Setup zsh-autosuggestions
-source ~/git/zsh-autosuggestions/autosuggestions.zsh
-
-# Enable autosuggestions automatically
-zle-line-init() {
-    zle autosuggest-start
-}
-zle -N zle-line-init
-
-# use ctrl+t to toggle autosuggestions(hopefully this wont be needed as
-# zsh-autosuggestions is designed to be unobtrusive)
-bindkey '^T' autosuggest-toggle
-
 # Set site-specific items.
 source ~/.zshrc.site
 compinit -i
@@ -114,4 +102,3 @@ compinit -i
 export LESS=-r
 export PAGER=less
 
-test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_integration.zsh

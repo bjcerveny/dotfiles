@@ -16,18 +16,18 @@
 " This must be first, because it changes other options as a side effect.
 "-------------------------------------------------------------------------------
 set nocompatible
+filetype off                   " required!
 
 "-------------------------------------------------------------------------------
 " Set up Vundle
 "-------------------------------------------------------------------------------
-filetype off                   " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Bundle 'VundleVim/Vundle.vim'
 
 " My Bundles here:
 "
@@ -35,15 +35,11 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'perl-support.vim'
 Bundle 'L9'
 Bundle 'FuzzyFinder'
-" Bundle 'git://git.wincent.com/command-t.git'
-" Bundle 'Command-T'
 Bundle 'Markdown'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
-Bundle 'molokai'
-"Bundle 'Valloric/YouCompleteMe' 
+Bundle 'tomasr/molokai'
 Bundle 'klen/python-mode'
-Bundle 'asciidoc'
 
 filetype plugin indent on     " required!
 "

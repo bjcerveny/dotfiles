@@ -17,10 +17,6 @@ alias basebranch="sed -e 's=.*/\\([^/]*\\)\\/[1-9][0-9]*\$=\\1='"
 alias basebranchl="sed -e 's=.*@@\\(/.*\\)\\/[0-9]*\$=\\1=q'"
 alias bbi="bb install"
 alias bbc="bbi && cpbee"
-alias bd="cd ~/Work/OptiCM6/bee-devel"
-alias bee-sms4="/usr/local/opticm6/dev/bee-sms4/bee"
-alias beedev="/usr/local/opticm6/dev/bee/bee"
-alias beedev="/usr/local/opticm6/dev/bee/bee"
 alias bl='gvim $HOME/bldlogs/`ls -1rt $HOME/bldlogs/ | tail -1`'
 alias bld='bsub -I -q il93g-lnxbld'
 alias breset="bee forall -- git checkout development"
@@ -68,7 +64,7 @@ alias gka='gitk --all &'
 alias gl11='git log --oneline -1'
 alias gl1='git log --oneline'
 alias gl='git log'
-alias gq='ssh opticm6.rds.intel.com gerrit show-queue | grep tasks'
+alias gq='ssh git.shure.com gerrit show-queue | grep tasks'
 alias gr='git remote'
 alias grb='git rebase'
 alias gst="git status -s"
@@ -216,7 +212,7 @@ function gb() {
 }
 
 alias fromip="last -1 -i -a | cut -c61- | head -1"
-alias gerrit="ssh opticm6.rds.intel.com gerrit"
+alias gerrit="ssh git.shure.com gerrit"
 
 # alias last and save
 # # use `als c NAME` to chop off the last argument (for filenames/patterns)
@@ -274,7 +270,7 @@ alias ax="chmod a+x"
 
 alias py="python"
 
-alias gerrit="ssh opticm6.rds.intel.com gerrit"
+alias gerrit="ssh git.shure.com gerrit"
 
 alias gbv="git branch -v"
 

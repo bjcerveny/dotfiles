@@ -1,3 +1,4 @@
+
 "===============================================================================
 "         FILE:  .gvimrc
 "  DESCRIPTION:  suggestion for a personal configuration file ~/.gvimrc
@@ -56,10 +57,6 @@ inoremap  <RightMouse> <ESC>
 "-------------------------------------------------------------------------------
 " use font with clearly distinguishable brackets : ()[]{}
 "-------------------------------------------------------------------------------
-if has("mac")
-  set guifont=Source\ Code\ Pro:h14
-else
-  set guifont=Inconsolata\ 13
-endif
+set guifont=Consolas:h14
 
 "
