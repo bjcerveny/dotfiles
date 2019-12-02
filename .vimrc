@@ -40,6 +40,8 @@ Bundle 'rizzatti/funcoo.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'tomasr/molokai'
 Bundle 'klen/python-mode'
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
 
 filetype plugin indent on     " required!
 "
