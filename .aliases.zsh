@@ -1,6 +1,11 @@
 # Git aliases for bash/zsh
 # Inline aliases, zsh -g aliases can be anywhere in command line
 #alias enter_oc6="ssh musxeris001.imu.intel.com"
+domainname () {
+  hostname -f | sed -e 's/^[^.]*\.//'
+}
+
+alias lc="tr '[:upper:]' '[:lower:]'"
 alias '..'='cd ..'
 alias -g ......='../../../../..'
 alias -g .....='../../../..'
@@ -12,43 +17,22 @@ alias -g L='| less'
 alias -g NF='$(\ls *(.om[1]))'    # newest file
 alias -g np='PAGER='
 alias -g GT='GIT_TRACE=1'
-alias b="bee"
 alias basebranch="sed -e 's=.*/\\([^/]*\\)\\/[1-9][0-9]*\$=\\1='"
 alias basebranchl="sed -e 's=.*@@\\(/.*\\)\\/[0-9]*\$=\\1=q'"
-alias bbi="bb install"
-alias bbc="bbi && cpbee"
-alias bl='gvim $HOME/bldlogs/`ls -1rt $HOME/bldlogs/ | tail -1`'
-alias bld='bsub -I -q il93g-lnxbld'
-alias breset="bee forall -- git checkout development"
-alias bst="bee status"
-alias catcr='cleartool catcr'
-alias catcs='cleartool catcs'
-alias cci='cleartool checkin'
-alias cciall='lsco -cview -all   -s | xargs -i -n 15 -P 2 --no-run-if-empty cleartool ci -nc '
-alias cciavobs='lsco -cview -avobs -s | xargs -i -n 15 -P 2 --no-run-if-empty cleartool ci -nc '
-alias cco='cleartool checkout'
-alias cdiff='cleartool diff -columns 132'
 alias cdr='cd `pwd -r`'
-alias cls='cleartool ls'
-alias cman='cleartool man'
 alias cp='cp -v'
-alias ct='cleartool'
 alias df='df -H'
 alias dir="ls -l"
 alias dir='ll'
 alias dirt="ls -lrt"
 alias dirt='ll -rt'
-alias dr2="cd /localrepo2/$USER"
-alias dr="cd /localrepo/$USER"
-alias du='du --si'
-alias e6='enter_oc6'
+alias du='du -h'
 alias edcs='cleartool edcs'
 alias fromip="last -1 -i -a | cut -c61- | head -1"
 alias g="grep"
 alias g='grep'
 #alias gb='git branch'
 alias gba='git branch -a'
-alias gbl='gvim $HOME/bldlogs/`ls -1rt $HOME/bldlogs/ | tail -1`'
 alias gc='git commit -v'
 alias gca='git commit -v -a'
 alias gco='git checkout'
@@ -274,23 +258,26 @@ alias gerrit="ssh git.shure.com gerrit"
 
 alias gbv="git branch -v"
 
-alias srs="./utp_set_review_state -i"
-
-alias utils="cd /Users/bjcerven/l/oc6_utils/oc6_utils"
-
-alias bca="bee commit --amend -a ."
-
-alias cdc="create_date_commit.sh"
-
-alias beecommands="bee -h | grep '^  ' | sed 's/^..//;s/[ /].*//'"
-
-alias enable-crd="sed -i .bak 's=<crdEnabled>false</crdEnabled>=<crdEnabled>true</crdEnabled>=' .hive/config/config.xml"
-
-alias bee-dev="/usr/local/opticm6/dev/bee/bee"
-
-alias oc6mirrors="xml sel -t -v '//alias[@name=\"opticm6\"]/slave[@isSlaveSite=\"true\"]/@host' /usr/local/opticm6/bee-current/conf/gerrit-hosts.xml"
-
-alias ipython="python -m IPython"
+alias ipy="python -m IPython"
 
 alias py3="python3"
-alias jenkins=ssh-p30303localhost="ssh -p 30303 localhost restart"
+alias jenkins="ssh -p 30303 localhost restart"
+
+#####################################
+# Shure Only
+
+if [[ $(domainname) = "shure.com" ]]; then
+
+  echo Setting up Shure environment...
+
+  for i in {1..70} 801 802; do
+	alias lx-vm${i}="ssh -p 22 lx-vm${i}"
+	alias lx-ch${i}="ssh -p 22 lx-ch${i}"
+	alias ms-vm${i}="ssh -p 22 ms-vm${i}"
+  done
+
+  for i in sandbox bbdev jiradev; do
+	alias ${i}="ssh -p 22 $i"
+  done
+fi
+
