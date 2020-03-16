@@ -27,42 +27,38 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'VundleVim/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " My Bundles here:
 "
-Bundle 'tpope/vim-fugitive'
-Bundle 'perl-support.vim'
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-Bundle 'Markdown'
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/dash.vim'
-Bundle 'tomasr/molokai'
-Bundle 'klen/python-mode'
-Bundle 'vim-airline/vim-airline'
-Bundle 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-fugitive'
+Plugin 'perl-support.vim'
+Plugin 'L9'
+Plugin 'FuzzyFinder'
+Plugin 'Markdown'
+Plugin 'rizzatti/funcoo.vim'
+Plugin 'rizzatti/dash.vim'
+Plugin 'tomasr/molokai'
+Plugin 'klen/python-mode'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
+let g:airline_powerline_fonts = 1
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
 filetype plugin indent on     " required!
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
 "
 " Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
 " see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
-
-
-"
-"-------------------------------------------------------------------------------
-" Enable file type detection. Use the default filetype settings.
-" Also load indent files, to automatically do language-dependent indenting.
-"-------------------------------------------------------------------------------
-"filetype  on
-"filetype  plugin on
-"filetype  indent on
+" Put your non-Plugin stuff after this line
 
 autocmd filetype perl   set expandtab
 autocmd filetype python set expandtab
