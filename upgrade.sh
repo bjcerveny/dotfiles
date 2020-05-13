@@ -1,3 +1,4 @@
+#!/bin/bash
 
 # Use colors, but only if connected to a terminal, and that terminal
 # supports them.
@@ -21,7 +22,7 @@ else
 fi
 
 printf "${BLUE}%s${NORMAL}\n" "Updating Oh My Zsh"
-cd "$DOTFILES"
+cd "$DOTFILES" || exit
 if git pull --rebase --stat origin master
 then
   printf '%s' "$GREEN"

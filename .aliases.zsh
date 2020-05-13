@@ -17,8 +17,6 @@ alias -g L='| less'
 alias -g NF='$(\ls *(.om[1]))'    # newest file
 alias -g np='PAGER='
 alias -g GT='GIT_TRACE=1'
-alias basebranch="sed -e 's=.*/\\([^/]*\\)\\/[1-9][0-9]*\$=\\1='"
-alias basebranchl="sed -e 's=.*@@\\(/.*\\)\\/[0-9]*\$=\\1=q'"
 alias cdr='cd `pwd -r`'
 alias cp='cp -v'
 alias df='df -H'
@@ -27,7 +25,6 @@ alias dir='ll'
 alias dirt="ls -lrt"
 alias dirt='ll -rt'
 alias du='du -h'
-alias edcs='cleartool edcs'
 alias fromip="last -1 -i -a | cut -c61- | head -1"
 alias g="grep"
 alias g='grep'
@@ -57,43 +54,26 @@ alias gt='cd $(git root)'  # cd $(git rev-parse --show-toplevel
 alias gvim='gvim -p'  # open multiple files in tabs
 alias gzip='gzip --no-name'  # Do not store original filename/timestamp
 alias l='git l'
-alias lsattype='cleartool lstype -kind attype'
-alias lsbrtype='cleartool lstype -kind brtype'
-alias lsco='cleartool lsco'
-alias lslbtype='cleartool lstype -kind lbtype'
-alias lsvt='cleartool lsvtree -merge'
 alias lt=dirt
 alias lu="cd /localuser/bjcerven && ls -1d *(/)"
 alias mdl='cd ~/droidrepo/main-dev-lte'
 alias mf='repo manifest -o -'
 alias mfv='mf | view -'
-alias nbcdiff='cleartool diff -columns 132 -options -blank_ignore'
-alias nbxdiff='cleartool diff -g -options -blank_ignore'
 alias psed='perl -pe'
 alias ptrel='source ~/bin/ptrel'
 alias pushprod='(cd ../prod && git pull dev lte)'
-alias pwv='cleartool pwv -short'
 alias quota='quota -s'
 alias rfa='repo forall -c git fetch --all'
 alias rt='cd $repotop'   # See repotop function below
-alias setcs='cleartool setcs'
 alias sms='echo Command exited code $? | sendmail 8479036389@txt.att.net'
 alias ssync='repo sync -j 4 $(lsepoch.pl -q -d -w)'
 alias t='tig'
 alias ta='tig --all'
-alias thisvob='cleartool desc -fmt "%n\n" vob:.'
-alias unco='cleartool uncheckout'
-alias uncoall='lsco -cview -all   -s | sort -r | xargs -i -n 15 -P 2 --no-run-if-empty cleartool unco -rm '
-alias uncoavobs='lsco -cview -avobs -s | sort -r | xargs -i -n 15 -P 2 --no-run-if-empty cleartool unco -rm '
-alias uniqvobs='grep /vob | sed -e "s=.*\(/vob[s]*/\(\(linuxjava\|cdma\|cwag\|gccsc\|jem\|linuxjava\|linuxjava_test\|mm\|simtech\|tdma_tool\|testtech\|tetra\|util\)/\)\?[a-zA-Z0-9_\-]*\).*=\1=" | sort | uniq' # add -c on command line for count of uniq vobs 
 alias unptrel='source ~/bin/unptrel'
 alias vnc2='vncserver -geometry 1900x1200 :89 &'
 alias vnc='vncserver -geometry 1680x1050 -depth 16 :88 &'
 alias vncreset='rm -f /tmp/.X88-lock /tmp/.X11-unix/X88'
 alias warn='print -u 2'
-alias xdiff0='cleartool diff -g `ct desc -s \!* | sed -f $HOME/bin/xdiff0.sed` &'
-alias xdiff='cleartool diff -g'
-alias xlsvt='cleartool lsvtree -g'
 alias zl='gvim -f $HOME/.zshrc.local && source $HOME/.zshrc.local'
 alias zs="source ~/.zshrc"
 alias zs='gvim -f $HOME/.zshrc.site  && source $HOME/.zshrc.site'
@@ -246,20 +226,12 @@ man() {
             man "$@"
 }
 
-alias prop="cd ~/l/7360/utils/scripts/propagation"
-
 alias gdt="git difftool"
-
 alias ax="chmod a+x"
-
 alias py="python"
-
 alias gerrit="ssh git.shure.com gerrit"
-
 alias gbv="git branch -v"
-
 alias ipy="python -m IPython"
-
 alias py3="python3"
 alias jenkins="ssh -p 30303 localhost restart"
 
