@@ -10,8 +10,8 @@ als () {
 		shift
 	fi
 	aliasfile=~/.aliases 
-	touch $aliasfile
-	if [[ `cat "$aliasfile" |grep "alias ${1// /}="` != "" ]]
+	touch "$aliasfile"
+	if grep -q "alias ${1// /}=" "$aliasfile"
 	then
 		echo "Alias ${1// /} already exists"
 	else
