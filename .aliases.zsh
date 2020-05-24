@@ -5,6 +5,8 @@ domainname () {
   hostname -f | sed -e 's/^[^.]*\.//'
 }
 
+realpath() { path=`eval echo "$1"` folder=$(dirname "$path ") echo $(cd "$folder"; pwd)/$(basename "$path"); }
+
 alias lc="tr '[:upper:]' '[:lower:]'"
 alias '..'='cd ..'
 alias -g ......='../../../../..'
@@ -60,7 +62,6 @@ alias mdl='cd ~/droidrepo/main-dev-lte'
 alias mf='repo manifest -o -'
 alias mfv='mf | view -'
 alias psed='perl -pe'
-alias ptrel='source ~/bin/ptrel'
 alias pushprod='(cd ../prod && git pull dev lte)'
 alias quota='quota -s'
 alias rfa='repo forall -c git fetch --all'
@@ -69,13 +70,16 @@ alias sms='echo Command exited code $? | sendmail 8479036389@txt.att.net'
 alias ssync='repo sync -j 4 $(lsepoch.pl -q -d -w)'
 alias t='tig'
 alias ta='tig --all'
-alias unptrel='source ~/bin/unptrel'
+alias thisvob='cleartool desc -fmt "%n\n" vob:.'
+alias unco='cleartool uncheckout'
+alias uncoall='lsco -cview -all   -s | sort -r | xargs -i -n 15 -P 2 --no-run-if-empty cleartool unco -rm '
+alias uncoavobs='lsco -cview -avobs -s | sort -r | xargs -i -n 15 -P 2 --no-run-if-empty cleartool unco -rm '
+alias uniqvobs='grep /vob | sed -e "s=.*\(/vob[s]*/\(\(linuxjava\|cdma\|cwag\|gccsc\|jem\|linuxjava\|linuxjava_test\|mm\|simtech\|tdma_tool\|testtech\|tetra\|util\)/\)\?[a-zA-Z0-9_\-]*\).*=\1=" | sort | uniq' # add -c on command line for count of uniq vobs 
 alias vnc2='vncserver -geometry 1900x1200 :89 &'
 alias vnc='vncserver -geometry 1680x1050 -depth 16 :88 &'
 alias vncreset='rm -f /tmp/.X88-lock /tmp/.X11-unix/X88'
 alias warn='print -u 2'
 alias zl='gvim -f $HOME/.zshrc.local && source $HOME/.zshrc.local'
-alias zs="source ~/.zshrc"
 alias zs='gvim -f $HOME/.zshrc.site  && source $HOME/.zshrc.site'
 if [[ $(uname -s) == 'Darwin' ]]; then
   alias vim='mvim -p'
@@ -86,6 +90,9 @@ else
   alias psg='ps -C | grep'
   alias psme='ps -Hu $USER'
 fi
+alias zl='vim -f $HOME/.zshrc.local && source $HOME/.zshrc.local'
+alias zs='vim -f $HOME/.zshrc && source $HOME/.zshrc'
+alias za='vim -f $HOME/.aliases.zsh && source $HOME/.aliases.zsh'
 
 echoerr() { echo "$@" 1>&2; }
 

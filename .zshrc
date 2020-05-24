@@ -4,6 +4,8 @@ SHELL=/bin/zsh
 ZSH=$HOME/.oh-my-zsh
 DOTFILES=$HOME/git/dotfiles
 
+TIMEFMT="'$fg[green]%J$reset_color' real: $fg[yellow]%*Es$reset_color, user: $fg[yellow]%U$reset_color, sys: $fg[yellow]%S$reset_color, cpu: $fg[yellow]%P$reset_color"
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -83,7 +85,7 @@ setopt nocorrectall
 
 if [[ `uname -s` == "Darwin" ]]; then 
   export GROOVY_HOME=/usr/local/opt/groovy/libexec
-  export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+  export JAVA_HOME=`/usr/libexec/java_home`
   # for Bee
   #export JAVA_OPTS="$JAVA_OPTS -Djavax.net.ssl.trustStore=/Library/Java/Home/lib/security/cacerts -Djavax.net.ssl.trustStorePassword=java-0kEys"
   export JAVA_OPTS="$JAVA_OPTS -Djavax.net.ssl.trustStore=$JAVA_HOME/lib/security/cacerts -Djavax.net.ssl.trustStorePassword=java-0kEys"
@@ -138,3 +140,8 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 export PATH="/usr/local/opt/ruby/bin:/usr/local/opt/python@3.8/bin:$PATH"
+
+TIMEFMT="%J  %U user %S system %P cpu %*E total"
+
+eval "$(direnv hook zsh)"
+
